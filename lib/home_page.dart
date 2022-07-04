@@ -136,6 +136,73 @@ class _home_page extends State<home_page> {
                  ),
                ),
              ),
+
+             Padding(
+               padding: const EdgeInsets.only(left: 10.0,right: 10,top: 10),
+               child: Container(
+                 width: MediaQuery.of(context).size.width,
+                 child: ListView.builder(
+                   itemCount: 8,
+                   scrollDirection: Axis.vertical,
+                   physics: ScrollPhysics(),
+                   shrinkWrap: true,
+                   itemBuilder: (context, position) {
+                     return  Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                             Row(
+                               children: [
+                                 // SizedBox(
+                                 //     width:30,
+                                 //     height: 30,
+                                 //     child:
+                                     Stack(
+                                         alignment: Alignment.center,
+                                         children: [
+                                           SizedBox(
+                                               width:45,
+                                               height: 45,
+                                               child: Image.asset("assets/twitercircle.png")),
+                                           SizedBox(
+                                               width:20,
+                                               height: 20,
+                                               child: Image.asset("assets/twitbird.png"))
+                                         ]
+                                  ),
+                                // ),
+                                  Column(
+                                   mainAxisAlignment: MainAxisAlignment.start,
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: [
+                                     Align(
+                                       alignment: Alignment.centerLeft,
+                                       child: Text(" Buy Coins",style: TextStyle(
+                                         color: Colors.white,
+                                         fontSize: 16,
+                                         fontWeight: FontWeight.bold,
+                                       )),
+                                     ),
+                                     Text(" Twitter inc.",
+                                         style: TextStyle(
+                                           color: Colors.grey,
+                                           fontSize: 13,
+                                         )),
+
+                                   ],
+                                 ),
+                               ],
+                             ),
+
+                             Icon(Icons.remove_red_eye,color: Colors.white,)
+                           ],
+                         ),
+                     );
+                   },
+                 ),
+               ),
+             ),
            ],
          ),
        ),
@@ -145,7 +212,7 @@ class _home_page extends State<home_page> {
     return ClipRRect(
       borderRadius:  BorderRadius.circular(25),
       child: BottomNavigationBar(
-        backgroundColor: Colors.black.withOpacity(0.5),
+        backgroundColor: Colors.black,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.usb), label: ''),
