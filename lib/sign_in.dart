@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frig/home_page.dart';
+
+import 'create_account.dart';
 
 class sign_in extends StatefulWidget{
   @override
@@ -175,6 +178,7 @@ class _create_account extends State<sign_in> {
                   ),
                   child: FlatButton(
                     onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));
                     },
                     child: Text("LOG IN",
                       textAlign: TextAlign.center,
@@ -194,6 +198,7 @@ class _create_account extends State<sign_in> {
               padding: const EdgeInsets.symmetric(vertical: 0.0),
               child: InkWell(
                 onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => create_account()));
                 },
                 child: Align(
                   alignment: Alignment.bottomCenter,
