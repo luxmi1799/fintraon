@@ -141,6 +141,155 @@ class _profile extends State<profile> {
               ),
             ),
 
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Card(
+                color: Color(0xff2f2e2e),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.black, width: 1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                margin: EdgeInsets.symmetric(vertical: 20.0,horizontal: 12),
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.support,color: Colors.white,size: 25,),
+                            SizedBox(width: 4,),
+                            Text("Support",style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                            ),)
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 10),
+                        child: Container(
+                          width: 200,
+                          height: 2,
+                          color: Color(0xff524f4f),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.miscellaneous_services,color: Colors.white,size: 25,),
+                            SizedBox(width: 4,),
+                            Text("Services",style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                            ),)
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 10),
+                        child: Container(
+                          width: 200,
+                          height: 2,
+                          color: Color(0xff524f4f),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.settings,color: Colors.white,size: 25,),
+                            SizedBox(width: 4,),
+                            Text("Setting",style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                            ),)
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 10),
+                        child: Container(
+                          width: 200,
+                          height: 2,
+                          color: Color(0xff524f4f),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.login,color: Colors.white,size: 25,),
+                            SizedBox(width: 4,),
+                            Text("Log Out",style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                            ),)
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 10),
+                        child: Container(
+                          width: 200,
+                          height: 2,
+                          color: Color(0xff524f4f),
+                        ),
+                      ),
+
+
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 40,bottom: 10),
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color:Color(0xff151414),
+                ),
+
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Center(
+                        child: Text("We'h love to hear your feedback  on threads,if you have any?",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Icon(Icons.arrow_forward_ios,color: Colors.white,size: 20,)
+
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),
