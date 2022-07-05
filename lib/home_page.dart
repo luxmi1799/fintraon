@@ -2,6 +2,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frig/home_activity.dart';
+import 'package:frig/my_profile.dart';
 import 'package:frig/wallet.dart';
 
 class home_page extends StatefulWidget{
@@ -17,7 +18,7 @@ class _home_page extends State<home_page> {
     home_activity(),
     Text("3333"),
     home_activity(),
-    home_activity(),
+    profile(),
     wallet(),
   ];
   @override
@@ -64,7 +65,7 @@ class _home_page extends State<home_page> {
           icon: Icon(Icons.assignment_ind),
         ),
         CustomNavigationBarItem(
-          title: Text("Packages",
+          title: Text("Portfolio",
             style: TextStyle(
                 fontSize: 10,
                 color: Colors.white
