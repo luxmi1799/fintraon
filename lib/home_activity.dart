@@ -418,6 +418,232 @@ class _home_page extends State<home_activity> {
                ],
              ),
            ),
+
+
+           Padding(
+             padding: const EdgeInsets.only(left: 10.0,top: 50,bottom: 15),
+             child: Align(
+               alignment: Alignment.centerLeft,
+               child: Text("statistics",
+                 style: TextStyle(
+                   fontWeight: FontWeight.bold,
+                   color: Colors.white,
+                   fontSize: 24
+                 ),
+               ),
+             ),
+           ),
+
+           Card(
+             color: Colors.white,
+             shape: RoundedRectangleBorder(
+               side: BorderSide(color: Colors.white, width: 1),
+               borderRadius: BorderRadius.circular(10),
+             ),
+             margin: EdgeInsets.all(20.0),
+             child: Container(
+               child: Column(
+                 children: <Widget>[
+
+                   Padding(
+                     padding: const EdgeInsets.symmetric(vertical: 15.0),
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           crossAxisAlignment: CrossAxisAlignment.center,
+                           children: [
+                             Padding(
+                               padding: const EdgeInsets.only(top: 8.0),
+                               child: Text("Open",
+                                 style: TextStyle(
+                                   color: Colors.grey[600],
+                                   fontSize: 13,
+                                   fontWeight: FontWeight.bold,
+
+                                 ),
+                               ),
+                             ),
+
+                             SizedBox(
+                               height: 10,
+                             ),
+
+                             Text("224.5",
+                               style: TextStyle(
+                                 color: Colors.black,
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                             )
+                           ],
+                         ),
+
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Padding(
+                               padding: const EdgeInsets.only(top: 8.0),
+                               child: Text("High",
+                                 style: TextStyle(
+                                   color: Colors.grey[600],
+                                   fontSize: 13,
+                                   fontWeight: FontWeight.bold,
+
+                                 ),
+                               ),
+                             ),
+
+                             SizedBox(
+                               height: 10,
+                             ),
+
+                             Text("224.5",
+                               style: TextStyle(
+                                 color: Colors.black,
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                             )
+                           ],
+                         ),
+
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Padding(
+                               padding: const EdgeInsets.only(top: 8.0),
+                               child: Text("Low",
+                                 style: TextStyle(
+                                   color: Colors.grey[600],
+                                   fontSize: 13,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                               ),
+                             ),
+
+                             SizedBox(
+                               height: 10,
+                             ),
+
+                             Text("224.5",
+                               style: TextStyle(
+                                 color: Colors.black,
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                             )
+                           ],
+                         ),
+
+
+                       ],
+                     ),
+                   ),
+
+                   Padding(
+                     padding: const EdgeInsets.symmetric(vertical: 15.0),
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Padding(
+                               padding: const EdgeInsets.only(top: 8.0),
+                               child: Text("Volume",
+                                 style: TextStyle(
+                                   color: Colors.grey[600],
+                                   fontSize: 13,
+                                   fontWeight: FontWeight.bold,
+
+                                 ),
+                               ),
+                             ),
+
+                             SizedBox(
+                               height: 10,
+                             ),
+
+                             Text("224.5",
+                               style: TextStyle(
+                                 color: Colors.black,
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                             )
+                           ],
+                         ),
+
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Padding(
+                               padding: const EdgeInsets.only(top: 8.0),
+                               child: Text("Avg. Volume",
+                                 style: TextStyle(
+                                   color: Colors.grey[600],
+                                   fontSize: 13,
+                                   fontWeight: FontWeight.bold,
+
+                                 ),
+                               ),
+                             ),
+
+                             SizedBox(
+                               height: 10,
+                             ),
+
+                             Text("224.5",
+                               style: TextStyle(
+                                 color: Colors.black,
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                             )
+                           ],
+                         ),
+
+                         Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Padding(
+                               padding: const EdgeInsets.only(top: 8.0),
+                               child: Text("Market Cap",
+                                 style: TextStyle(
+                                   color: Colors.grey[600],
+                                   fontSize: 13,
+                                   fontWeight: FontWeight.bold,
+
+                                 ),
+                               ),
+                             ),
+
+                             SizedBox(
+                               height: 10,
+                             ),
+
+                             Text("224.5",
+                               style: TextStyle(
+                                 color: Colors.black,
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.bold,
+                               ),
+                             )
+                           ],
+                         ),
+
+
+                       ],
+                     ),
+                   ),
+
+                 ],
+               ),
+             ),
+           ),
+
          ],
        ),
       ),
