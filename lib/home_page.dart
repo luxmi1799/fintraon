@@ -2,6 +2,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frig/home_activity.dart';
+import 'package:frig/wallet.dart';
 
 class home_page extends StatefulWidget{
   @override
@@ -17,7 +18,7 @@ class _home_page extends State<home_page> {
     Text("3333"),
     home_activity(),
     home_activity(),
-    home_activity(),
+    wallet(),
   ];
   @override
   Widget build(BuildContext context) {

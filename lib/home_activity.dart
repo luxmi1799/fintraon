@@ -247,7 +247,7 @@ class _home_page extends State<home_activity> {
               ),
             ),
         ),
-      body: SingleChildScrollView(
+       body: SingleChildScrollView(
        child: Column(
          children: [
 
