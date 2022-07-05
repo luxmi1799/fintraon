@@ -100,3 +100,5 @@ class _home_page extends State<home_page> {
     );
   }
 }
+
+//https://www.figma.com/file/8CzEQCaygRDFMHOC2AGikS/Fintracon?node-id=0%3A1
