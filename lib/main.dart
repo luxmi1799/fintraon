@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frig/create_account.dart';
+import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,11 +55,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Opacity(
                       opacity: _opacity,
-                      child: Image.asset(
-                          'assets/splash(2).png',
-                          width: double.maxFinite,
-                          height: MediaQuery.of(context).size.height,
-                          fit: BoxFit.contain)),
+                      //child: Lottie.asset('assets/lottie.json'),
+                      // child: Image.asset(
+                      //     'assets/splash(2).png',
+                      //     width: double.maxFinite,
+                      //     height: MediaQuery.of(context).size.height,
+                      //     fit: BoxFit.contain)
+                  ),
                 ]),
               ],
             )
@@ -83,6 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 50.0,horizontal: 20),
+                    child: Lottie.asset('assets/lottie.json'),
                   ),
                 ],
               ),
