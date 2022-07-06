@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frig/home_activity.dart';
 import 'package:frig/my_profile.dart';
+import 'package:frig/portfolio.dart';
 import 'package:frig/wallet.dart';
 
 class home_page extends StatefulWidget{
@@ -17,7 +18,7 @@ class _home_page extends State<home_page> {
   List<Widget> tabs = [
     home_activity(),
     Text("3333"),
-    home_activity(),
+    portfolio(),
     profile(),
     wallet(),
   ];
@@ -54,7 +55,7 @@ class _home_page extends State<home_page> {
             fontSize: 10,
             color: Colors.white
           ),),
-          icon: Icon(Icons.assignment_ind),
+          icon: Icon(Icons.home_filled),
           ),
         CustomNavigationBarItem(
           title: Text("News",
@@ -62,7 +63,7 @@ class _home_page extends State<home_page> {
                 fontSize: 10,
                 color: Colors.white
             ),),
-          icon: Icon(Icons.assignment_ind),
+          icon: Icon(Icons.my_library_books),
         ),
         CustomNavigationBarItem(
           title: Text("Portfolio",
@@ -70,7 +71,7 @@ class _home_page extends State<home_page> {
                 fontSize: 10,
                 color: Colors.white
             ),),
-          icon: Icon(Icons.assignment_ind),
+          icon: Icon(Icons.money_outlined),
         ),
         CustomNavigationBarItem(
           title: Text("Profile",
@@ -78,7 +79,7 @@ class _home_page extends State<home_page> {
                 fontSize: 10,
                 color: Colors.white
             ),),
-          icon: Icon(Icons.assignment_ind),
+          icon: Icon(Icons.person),
         ),
         CustomNavigationBarItem(
           title: Text("Wallets",
@@ -86,7 +87,7 @@ class _home_page extends State<home_page> {
                 fontSize: 10,
                 color: Colors.white
             ),),
-          icon: Icon(Icons.assignment_ind),
+          icon: Icon(Icons.account_balance_wallet),
         ),
 
       ],

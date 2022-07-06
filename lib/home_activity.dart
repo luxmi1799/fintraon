@@ -421,10 +421,10 @@ class _home_page extends State<home_activity> {
 
 
            Padding(
-             padding: const EdgeInsets.only(left: 10.0,top: 50,bottom: 15),
+             padding: const EdgeInsets.only(left: 12.0,top: 50,bottom: 15),
              child: Align(
                alignment: Alignment.centerLeft,
-               child: Text("statistics",
+               child: Text("Statistics",
                  style: TextStyle(
                    fontWeight: FontWeight.bold,
                    color: Colors.white,
