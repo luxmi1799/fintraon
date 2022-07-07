@@ -25,7 +25,7 @@ class _profile extends State<profile> {
         title: Text.rich(
           TextSpan(
             children: [
-              TextSpan(text: "My Wallet",
+              TextSpan(text: "My Profile",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
