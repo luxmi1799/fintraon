@@ -649,5 +649,4 @@ class _home_page extends State<home_activity> {
       ),
     );
   }
-
 }

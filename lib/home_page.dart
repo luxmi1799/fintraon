@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frig/home_activity.dart';
 import 'package:frig/my_profile.dart';
+import 'package:frig/new_page.dart';
 import 'package:frig/portfolio.dart';
 import 'package:frig/wallet.dart';
 
@@ -17,7 +18,7 @@ class _home_page extends State<home_page> {
   int _currentIndex = 0;
   List<Widget> tabs = [
     home_activity(),
-    Text("3333"),
+    news(),
     portfolio(),
     profile(),
     wallet(),
