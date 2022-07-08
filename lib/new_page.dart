@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frig/news_details.dart';
 
 class news extends StatefulWidget{
   @override
@@ -8,6 +9,7 @@ class news extends StatefulWidget{
 }
 
 class _news extends State<news> {
+  bool detail = false;
   @override
   Widget build(BuildContext context) {
      return DefaultTabController(
@@ -19,6 +21,7 @@ class _news extends State<news> {
            leading: InkWell(
                onTap: (){
                  setState(() {
+                   detail = false;
                  });
                  //Navigator.of(context).push(MaterialPageRoute(builder: (context) => edit_profile()));
                },
@@ -75,7 +78,7 @@ class _news extends State<news> {
                   Expanded(
                      child: TabBarView(
                        children:  [
-                         editorial(context),
+                         detail == false?editorial(context):news_details(),
                          Center(child: Text("Status Pages"),),
                          Center(child: Text('Calls Page'),),
                          Center(child: Text('Settings Page'),)
@@ -195,13 +198,86 @@ class _news extends State<news> {
                        child: Row(
                           children: [
                            Image.asset("assets/news_list.png"),
-                           Column(
-                             mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                           Padding(
+                             padding: const EdgeInsets.all(10.0),
+                             child: Column(
+                               mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "ALT -3.7%",
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: Colors.white70,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Text(
+                                        "3 Sept 2020",
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: Colors.white70,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
 
-                              ],
-                            ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 3.0),
+                                    child: Text(
+                                      "ATLANTIA",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),
+
+                                   Container(
+                                     width: MediaQuery.of(context).size.width*0.5,
+                                     child: Text(
+                                        "If this approach does not work for you when you use Column,wrap the Column in Flexiblee Column in Flexible",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                        ),
+                                       maxLines: 2,
+                                       overflow: TextOverflow.ellipsis,
+                                       //softWrap: true,
+                                      ),
+                                   ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 1.0),
+                                    child: InkWell(
+                                      onTap: (){
+                                        setState(() {
+                                          detail =true;
+                                        });
+                                      },
+                                      child: Text(
+                                        "Read more",
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            color: Color(0xff1228E9),
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                           ),
                           ],
                         ),
                     ),
