@@ -44,7 +44,7 @@ class _home_page extends State<home_page> {
       iconSize: 30.0,
       selectedColor:Color(0xff1228E9),
       strokeColor: Colors.white,
-      unSelectedColor: Colors.grey[600],
+      unSelectedColor: Colors.white,
       backgroundColor: Colors.white60,
       borderRadius: Radius.circular(20.0),
       blurEffect: true,
