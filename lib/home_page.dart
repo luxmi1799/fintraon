@@ -40,65 +40,68 @@ class _home_page extends State<home_page> {
   }
 
   Widget _buildBlurEffect() {
-    return CustomNavigationBar(
-      iconSize: 30.0,
-      selectedColor:Color(0xff1228E9),
-      strokeColor: Colors.white,
-      unSelectedColor: Colors.white,
-      backgroundColor: Colors.white60,
-      borderRadius: Radius.circular(20.0),
-      blurEffect: true,
-      opacity: 0.8,
-      items: [
-        CustomNavigationBarItem(
-          title: Text("Home",
-            style: TextStyle(
-            fontSize: 10,
-            color: Colors.white
-          ),),
-          icon: Icon(Icons.home_filled),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: CustomNavigationBar(
+        iconSize: 30.0,
+        selectedColor:Color(0xffEC1C24),
+        strokeColor: Colors.white,
+        unSelectedColor: Colors.white,
+        backgroundColor: Color(0xffffffff).withOpacity(0.1),
+        borderRadius: Radius.circular(10.0),
+        blurEffect: true,
+        opacity: 0.8,
+        items: [
+          CustomNavigationBarItem(
+            title: Text("Home",
+              style: TextStyle(
+              fontSize: 10,
+              color: Colors.white
+            ),),
+            icon: Icon(Icons.home_filled),
+            ),
+          CustomNavigationBarItem(
+            title: Text("News",
+              style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.white
+              ),),
+            icon: Icon(Icons.newspaper),
           ),
-        CustomNavigationBarItem(
-          title: Text("News",
-            style: TextStyle(
-                fontSize: 10,
-                color: Colors.white
-            ),),
-          icon: Icon(Icons.my_library_books),
-        ),
-        CustomNavigationBarItem(
-          title: Text("Portfolio",
-            style: TextStyle(
-                fontSize: 10,
-                color: Colors.white
-            ),),
-          icon: Icon(Icons.money_outlined),
-        ),
-        CustomNavigationBarItem(
-          title: Text("Profile",
-            style: TextStyle(
-                fontSize: 10,
-                color: Colors.white
-            ),),
-          icon: Icon(Icons.person),
-        ),
-        CustomNavigationBarItem(
-          title: Text("Wallets",
-            style: TextStyle(
-                fontSize: 10,
-                color: Colors.white
-            ),),
-          icon: Icon(Icons.account_balance_wallet),
-        ),
+          CustomNavigationBarItem(
+            title: Text("Portfolio",
+              style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.white
+              ),),
+            icon: Icon(Icons.monetization_on_rounded),
+          ),
+          CustomNavigationBarItem(
+            title: Text("Profile",
+              style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.white
+              ),),
+            icon: Icon(Icons.person),
+          ),
+          CustomNavigationBarItem(
+            title: Text("Wallets",
+              style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.white
+              ),),
+            icon: Icon(Icons.account_balance_wallet),
+          ),
 
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      isFloating: true,
+        ],
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        isFloating: true,
+      ),
     );
   }
 }

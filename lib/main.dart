@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frig/create_account.dart';
-import 'package:lottie/lottie.dart';
+import 'package:frig/login.dart';
+import 'package:fade_out_particle/fade_out_particle.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _disappear = true;
   double _opacity = 0.9;
+
+
+  @override
+  void initState() {
+    super.initState();
+    new Future.delayed(
+        const Duration(milliseconds: 6000),
+            () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => login()),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -51,16 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     width: double.maxFinite,
                     height: MediaQuery.of(context).size.height,
-                    color: Colors.black.withOpacity(0.4),
+                    color: Colors.black.withOpacity(0.5),
                   ),
                   Opacity(
-                      opacity: _opacity,
-                      //child: Lottie.asset('assets/lottie.json'),
-                      // child: Image.asset(
-                      //     'assets/splash(2).png',
-                      //     width: double.maxFinite,
-                      //     height: MediaQuery.of(context).size.height,
-                      //     fit: BoxFit.contain)
+                      opacity: 1,
+                      child: Image.asset(
+                          'assets/backg.png',
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          fit: BoxFit.cover,
+                         )
                   ),
                 ]),
               ],
@@ -81,16 +96,32 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.symmetric(vertical: 50.0),
                     child: Center(
                       child: SizedBox(
-                        width: 300,
+                        width: 200,
+                        height: 200,
                         child: Image.asset("assets/logo.png",
                         ),
                       ),
                     ),
                   ),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 50.0,horizontal: 20),
-                    child: Lottie.asset('assets/lottie.json'),
+                  FadeOutParticle(
+                    curve: Curves.easeOutSine,
+                    disappear: _disappear,
+                    duration: const Duration(milliseconds: 5000),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Fintracon',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 90,
+                          )
+                        ),
+                      ],
+                    ),
+                    onAnimationEnd: () => print('animation ended'),
                   ),
                 ],
               ),
@@ -107,14 +138,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.8,
-                  height: 40,
+                  height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff1228E9),
+                    color: Color(0xffEC1C24),
                   ),
                   child: FlatButton(
                     onPressed: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => create_account()));
+                      setState(() {
+                        _disappear = !_disappear;
+                      });
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => login()));
                     },
                     child: Text("GET STARTED",
                       textAlign: TextAlign.center,
@@ -122,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        backgroundColor:  Color(0xff1228E9),
+                        backgroundColor:  Color(0xffEC1C24),
                       ),),
                     // color: Colors.white,
                   ),

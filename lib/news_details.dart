@@ -18,7 +18,7 @@ class _details extends State<news_details> {
            child: Stack(
              children: [
                Container(
-                 height: 120,
+                 height: 200,
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(10),
                    image: DecorationImage(
@@ -31,80 +31,87 @@ class _details extends State<news_details> {
            ),
          ),
 
-         Align(
-           alignment: Alignment.centerRight,
-           child: Container(
-             width: 90,
-             height: 20,
-             decoration: BoxDecoration(
-               borderRadius: BorderRadius.circular(15),
-               color: Colors.white,
-             ),
-             child: Align(
-               alignment: Alignment.center,
-               child: Text("Cryptocurrency",
-                 style: TextStyle(
-                     color: Colors.black,
-                     fontSize: 10
-                 ),),
-             ),
-           ),
-         ),
+         // Align(
+         //   alignment: Alignment.centerRight,
+         //   child: Container(
+         //     width: 90,
+         //     height: 20,
+         //     decoration: BoxDecoration(
+         //       borderRadius: BorderRadius.circular(15),
+         //       color: Colors.white,
+         //     ),
+         //     child: Align(
+         //       alignment: Alignment.center,
+         //       child: Text("Cryptocurrency",
+         //         style: TextStyle(
+         //             color: Colors.black,
+         //             fontSize: 10
+         //         ),),
+         //     ),
+         //   ),
+         // ),
 
          Padding(
            padding: const EdgeInsets.all(10.0),
            child: Row(
-             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
-               Column(
-                 children: [
+
                    Image.asset("assets/calender.png"),
                    SizedBox(
-                     height: 5,
+                     width: 5,
                    ),
                    Text("3 Sept 2020",
                      style: TextStyle(
                        color: Colors.white70,
                      ),
-                   )
-                 ],
                ),
 
-               Container(
-                 width: 170,
-                 height: 50,
-                 decoration: BoxDecoration(
-                   color: Colors.white.withOpacity(0.3),
-                 ),
-                 child: Center(
-                   //alignment: Alignment.center,
-                   child:Text.rich(
-                     TextSpan(
-                       children: [
-                         TextSpan(text: " What is the future of ",
-                             style: TextStyle(
-                               color: Colors.white,
-                               fontSize: 16,
-                             )
-                         ),
-                         TextSpan(text: "cryptocurrencies? ",
-                             style: TextStyle(
-                               color: Colors.white,
-                               fontWeight: FontWeight.bold,
-                               fontSize: 16,
-                             )
-                         ),
-                       ],
-                     ),
-                   ),
-                 ),
-               ),
+               // Container(
+               //   width: 170,
+               //   height: 50,
+               //   decoration: BoxDecoration(
+               //     color: Colors.white.withOpacity(0.3),
+               //   ),
+               //   child: Center(
+               //     //alignment: Alignment.center,
+               //     child:Text.rich(
+               //       TextSpan(
+               //         children: [
+               //           TextSpan(text: " What is the future of ",
+               //               style: TextStyle(
+               //                 color: Colors.white,
+               //                 fontSize: 16,
+               //               )
+               //           ),
+               //           TextSpan(text: "cryptocurrencies? ",
+               //               style: TextStyle(
+               //                 color: Colors.white,
+               //                 fontWeight: FontWeight.bold,
+               //                 fontSize: 16,
+               //               )
+               //           ),
+               //         ],
+               //       ),
+               //     ),
+               //   ),
+               // ),
 
              ],
            ),
          ),
 
-
+               Padding(
+                 padding: const EdgeInsets.all(10.0),
+                 child: Text(
+                   "What is the future of cryptocurrencies?",
+                   style: TextStyle(
+                     fontSize: 21,
+                     color: Color(0xffEC1C24),
+                     fontWeight: FontWeight.bold
+                   ),
+                 ),
+               ),
                Padding(
                  padding: const EdgeInsets.all(10.0),
                  child: Text(

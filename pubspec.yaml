@@ -47,8 +47,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  flutter_app_name: ^0.1.1
+  #flutter_app_name: ^0.1.1
+  flutter_svg: ^1.1.1+1
   flutter_launcher_icons: ^0.9.2
+  intl_phone_field: ^3.1.0
+  flutter_otp_text_field: ^1.0.0
+  fade_out_particle: ^1.1.1
+  flutter_markdown: ^0.6.10+3
+  avatar_view: ^1.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -97,7 +103,7 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logo1.jpeg"
+  image_path: "assets/logo.png"
 
 flutter_app_name:
   name: "Fintracon"

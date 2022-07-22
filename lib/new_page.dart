@@ -12,9 +12,7 @@ class _news extends State<news> {
   bool detail = false;
   @override
   Widget build(BuildContext context) {
-     return DefaultTabController(
-       length: 4,
-       child: Scaffold(
+     return Scaffold(
          backgroundColor: Colors.black,
          appBar: AppBar(
            centerTitle: true,
@@ -28,75 +26,48 @@ class _news extends State<news> {
            child: Icon(Icons.arrow_back_ios,color: Colors.white,)),
            backgroundColor:  Colors.transparent,
            elevation: 0,
-           title: Text.rich(
+           title:   detail == false?Text.rich(
              TextSpan(
                children: [
-                 TextSpan(text: "News Listing",
+                 TextSpan(text: "News",
                      style: TextStyle(
                          color: Colors.white,
-                         fontSize: 18,
+                         fontSize: 22,
                          fontWeight: FontWeight.bold
                      )
                  ),
                ],
              ),
+           ):Text("News Details",
+               style: TextStyle(
+                   color: Colors.white,
+                   fontSize: 22,
+                   fontWeight: FontWeight.bold
+               )
            ),
          ),
            body: Padding(
              padding: EdgeInsets.all(8.0),
-             child: Column(
-               children: [
-                 SizedBox(
-                   height: 7,
-                 ),
-                 Container(
-                   height: 30,
-                   decoration: BoxDecoration(
-                      // color: Colors.grey[300],
-                      // borderRadius: BorderRadius.circular(25.0)
+             child: SingleChildScrollView(
+               child: Column(
+                 children: [
+                   SizedBox(
+                     height: 5,
                    ),
-                   child:  TabBar(
-                     indicator: BoxDecoration(
-                         color: Color(0xff2d2d2d),
-                         borderRadius:  BorderRadius.circular(16.0),
-                         border: Border.all(color: Colors.white)
-                     ) ,
-                     labelColor: Colors.white,
-                     labelStyle: TextStyle(
-                       fontSize: 11,
-                       fontWeight: FontWeight.bold,
-                     ),
-                     unselectedLabelColor: Colors.grey[600],
-                     tabs: const  [
-                       Tab(text: 'EDITORIAL',),
-                       Tab(text: 'CRYPTO NEWS',),
-                       Tab(text: 'RAW MATERIAL',),
-                       Tab(text: 'ECONOMICS',)
-                     ],
-                   ),
-                 ),
-                  Expanded(
-                     child: TabBarView(
-                       children:  [
-                         detail == false?editorial(context):news_details(),
-                         Center(child: Text("Status Pages"),),
-                         Center(child: Text('Calls Page'),),
-                         Center(child: Text('Settings Page'),)
-                       ],
-                     )
-                 )
-               ],
+                    detail == false?editorial(context):news_details(),
+                 ],
+               ),
              ),
            )
-       ),
-     );
+       );
+
   }
 
  Widget editorial(BuildContext context){
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
+         /* Padding(
             padding: const EdgeInsets.all(10.0),
             child: Stack(
               children: [
@@ -174,112 +145,119 @@ class _news extends State<news> {
                 ),
               ],
             ),
-          ),
+          ),*/
 
           Padding(
             padding: const EdgeInsets.only(left: 0.0,right: 0,top: 15),
             child: Container(
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: 6,
                 scrollDirection: Axis.vertical,
                 physics: ScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, position) {
                   return  Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Color(0xff181818),
-                          borderRadius: BorderRadius.circular(5)
-                      ),
-                       child: Row(
-                          children: [
-                           Image.asset("assets/news_list.png"),
-                           Padding(
-                             padding: const EdgeInsets.all(10.0),
-                             child: Column(
-                               mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 1,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "ALT -3.7%",
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        "3 Sept 2020",
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 3.0),
-                                    child: Text(
-                                      "ATLANTIA",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                  ),
-
-                                   Container(
-                                     width: MediaQuery.of(context).size.width*0.5,
-                                     child: Text(
-                                        "If this approach does not work for you when you use Column,wrap the Column in Flexiblee Column in Flexible",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.white,
-                                        ),
-                                       maxLines: 2,
-                                       overflow: TextOverflow.ellipsis,
-                                       //softWrap: true,
-                                      ),
-                                   ),
-
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 1.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        setState(() {
-                                          detail =true;
-                                        });
-                                      },
-                                      child: Text(
-                                        "Read more",
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            color: Color(0xff1228E9),
-                                            fontWeight: FontWeight.bold
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                           ),
-                          ],
+                    child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          detail =true;
+                        });
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 100,
+                        decoration: BoxDecoration(
+                            color: Color(0xff181818),
+                            borderRadius: BorderRadius.circular(5)
                         ),
+                         child: Row(
+                            children: [
+                             Image.asset("assets/news_list.png"),
+                             Padding(
+                               padding: const EdgeInsets.all(10.0),
+                               child: Column(
+                                 mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 1,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "ALT -3.7%",
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: Colors.white70,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(
+                                          "3 Sept 2020",
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: Colors.white70,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 3.0),
+                                      child: Text(
+                                        "ATLANTIA",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                    ),
+
+                                     Container(
+                                       width: MediaQuery.of(context).size.width*0.5,
+                                       child: Text(
+                                          "If this approach does not work for you when you use Column,wrap the Column in Flexiblee Column in Flexible",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.white,
+                                          ),
+                                         maxLines: 2,
+                                         overflow: TextOverflow.ellipsis,
+                                         //softWrap: true,
+                                        ),
+                                     ),
+
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 1.0),
+                                      child: InkWell(
+                                        onTap: (){
+                                          setState(() {
+                                            detail =true;
+                                          });
+                                        },
+                                        child: Text(
+                                          "Read more",
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              color: Color(0xffEC1C24),
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                             ),
+                            ],
+                          ),
+                      ),
                     ),
                   );
                 },

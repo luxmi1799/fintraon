@@ -135,7 +135,7 @@ class _support extends State<support> {
                   height: 40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff1228E9),
+                    color: Color(0xffEC1C24),
                   ),
                   child: FlatButton(
                     onPressed: (){
@@ -146,7 +146,7 @@ class _support extends State<support> {
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        backgroundColor:  Color(0xff1228E9),
+                        backgroundColor:  Color(0xffEC1C24),
                       ),),
                     // color: Colors.white,
                   ),
