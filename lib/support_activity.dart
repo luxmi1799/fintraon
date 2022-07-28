@@ -31,6 +31,7 @@ class _support extends State<support> {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
+                      fontFamily: 'lato',
                       fontWeight: FontWeight.bold
                   )
               ),
@@ -46,6 +47,7 @@ class _support extends State<support> {
               padding: const EdgeInsets.only(left: 10.0,top: 50,bottom: 10),
               child: Text("Username",style: TextStyle(
                 fontSize: 10,
+                fontFamily: 'lato',
                 color: Colors.grey[500],
                 fontWeight: FontWeight.bold,
               ),),
@@ -74,6 +76,7 @@ class _support extends State<support> {
               padding: const EdgeInsets.only(left: 10.0,top: 27,bottom: 10),
               child: Text("Password",style: TextStyle(
                 fontSize: 10,
+                fontFamily: 'lato',
                 color: Colors.grey[500],
                 fontWeight: FontWeight.bold,
               ),),
@@ -102,6 +105,7 @@ class _support extends State<support> {
               padding: const EdgeInsets.only(left: 10.0,top: 27,bottom: 10),
               child: Text("Your Message",style: TextStyle(
                 fontSize: 10,
+                fontFamily: 'lato',
                 color: Colors.grey[500],
                 fontWeight: FontWeight.bold,
               ),),
@@ -145,6 +149,7 @@ class _support extends State<support> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
+                        fontFamily: 'lato',
                         fontWeight: FontWeight.bold,
                         backgroundColor:  Color(0xffEC1C24),
                       ),),

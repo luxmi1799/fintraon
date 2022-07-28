@@ -49,6 +49,7 @@ class _profile extends State<profile> {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
+                        fontFamily: 'lato',
                         fontWeight: FontWeight.bold
                     )
                 ),
@@ -67,6 +68,7 @@ class _profile extends State<profile> {
                        fontSize: 16,
                        fontWeight: FontWeight.bold,
                        color: Colors.white,
+                       fontFamily: 'lato',
                      ),),
                    ),
                  ),
@@ -101,6 +103,7 @@ class _profile extends State<profile> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
+                            fontFamily: 'lato',
                           ),),
                         SizedBox(
                           height: 6,
@@ -109,6 +112,7 @@ class _profile extends State<profile> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
+                            fontFamily: 'lato',
                           ),)
                       ],
                     ),
@@ -148,6 +152,7 @@ class _profile extends State<profile> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 17,
+                                  fontFamily: 'lato',
                                 ),),
 
                                 SizedBox(
@@ -156,7 +161,8 @@ class _profile extends State<profile> {
 
                                 Text("Share your friend get \$20 of free stocks",style: TextStyle(
                                   color: Colors.grey[600],
-                                  fontSize: 15,
+                                  fontSize: 14,
+                                  fontFamily: 'lato',
                                 ),),
                               ],
                             ),
@@ -195,6 +201,7 @@ class _profile extends State<profile> {
                               Text("Support",style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 13,
+                                fontFamily: 'lato',
                                 fontWeight: FontWeight.bold,
                               ),)
                             ],
@@ -221,6 +228,7 @@ class _profile extends State<profile> {
                                 color: Colors.white,
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'lato',
                               ),)
                             ],
                           ),
@@ -246,6 +254,7 @@ class _profile extends State<profile> {
                                 color: Colors.white,
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'lato',
                               ),)
                             ],
                           ),
@@ -271,6 +280,7 @@ class _profile extends State<profile> {
                                 color: Colors.white,
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'lato',
                               ),)
                             ],
                           ),
@@ -319,6 +329,7 @@ class _profile extends State<profile> {
                                 color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'lato',
                               ),
                             ),
                           ),

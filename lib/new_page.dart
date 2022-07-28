@@ -33,7 +33,8 @@ class _news extends State<news> {
                      style: TextStyle(
                          color: Colors.white,
                          fontSize: 22,
-                         fontWeight: FontWeight.bold
+                         fontWeight: FontWeight.bold,
+                         fontFamily: 'lato',
                      )
                  ),
                ],
@@ -42,7 +43,8 @@ class _news extends State<news> {
                style: TextStyle(
                    color: Colors.white,
                    fontSize: 22,
-                   fontWeight: FontWeight.bold
+                   fontWeight: FontWeight.bold,
+                   fontFamily: 'lato',
                )
            ),
          ),
@@ -192,6 +194,7 @@ class _news extends State<news> {
                                           style: TextStyle(
                                             fontSize: 10,
                                             color: Colors.white70,
+                                            fontFamily: 'lato',
                                           ),
                                         ),
                                         SizedBox(
@@ -202,6 +205,7 @@ class _news extends State<news> {
                                           style: TextStyle(
                                             fontSize: 10,
                                             color: Colors.white70,
+                                            fontFamily: 'lato',
                                           ),
                                         ),
                                       ],
@@ -214,7 +218,8 @@ class _news extends State<news> {
                                         style: TextStyle(
                                           fontSize: 14,
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'lato',
                                         ),
                                       ),
                                     ),
@@ -224,7 +229,8 @@ class _news extends State<news> {
                                        child: Text(
                                           "If this approach does not work for you when you use Column,wrap the Column in Flexiblee Column in Flexible",
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 10,
+                                            fontFamily: 'lato',
                                             color: Colors.white,
                                           ),
                                          maxLines: 2,

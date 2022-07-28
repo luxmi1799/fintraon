@@ -81,6 +81,7 @@ class _login_body extends State<_login> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'lato',
                           fontSize: 28,
                         ),),
                     ),
@@ -112,6 +113,7 @@ class _login_body extends State<_login> {
                                   style: TextStyle(
                                     color:  phone==true? Colors.white:Colors.black,
                                     fontSize: 15,
+                                    fontFamily: 'lato',
                                     fontWeight: FontWeight.bold,
                                     backgroundColor:phone==true? Color(0xffEC1C24):Colors.grey[200],
                                   ),),
@@ -137,6 +139,7 @@ class _login_body extends State<_login> {
                                   style: TextStyle(
                                     color: email==true? Colors.white:Colors.black,
                                     fontSize: 15,
+                                    fontFamily: 'lato',
                                     fontWeight: FontWeight.bold,
                                     backgroundColor:email==true? Color(0xffEC1C24):Colors.grey[200],
                                   ),),
@@ -157,7 +160,8 @@ class _login_body extends State<_login> {
                         decoration: InputDecoration(
                           labelText: 'Phone Number',
                             labelStyle: TextStyle(
-                              color: Colors.white
+                              color: Colors.white,
+                              fontFamily: 'lato',
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(width: 1.5, color: Colors.white),
@@ -205,6 +209,7 @@ class _login_body extends State<_login> {
                           labelStyle: TextStyle(
                             fontSize:20,
                             color: Colors.white,
+                            fontFamily: 'lato',
                           ),
                           //prefixIcon: new Icon(Icons.email),
                         ),
@@ -236,6 +241,7 @@ class _login_body extends State<_login> {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
+                              fontFamily: 'lato',
                               fontWeight: FontWeight.bold,
                               backgroundColor:  Color(0xffEC1C24),
                             ),),
@@ -255,6 +261,7 @@ class _login_body extends State<_login> {
                           Text("New to Fintracon ?",
                             style: TextStyle(
                               fontSize: 16,
+                              fontFamily: 'lato',
                               color: Colors.white,
                             ),
                           ),
@@ -270,6 +277,7 @@ class _login_body extends State<_login> {
                             child: Text(" Signup",
                               style: TextStyle(
                                 fontSize: 18,
+                                fontFamily: 'lato',
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -306,6 +314,7 @@ class _login_body extends State<_login> {
             children: [
               Text("please enter the OTP send to 9976547899",style: TextStyle(
                 fontSize: 13,
+                fontFamily: 'lato',
                 color: Colors.grey,
               ),),
               Icon(Icons.edit),
@@ -323,6 +332,7 @@ class _login_body extends State<_login> {
               labelStyle: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize:20,
+                fontFamily: 'lato',
                 color: Colors.grey,
               ),
               //prefixIcon: new Icon(Icons.email),
@@ -342,6 +352,7 @@ class _login_body extends State<_login> {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 14,
+                fontFamily: 'lato',
                 color: Colors.grey,
               ),),
           ),

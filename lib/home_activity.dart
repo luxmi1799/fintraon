@@ -76,6 +76,7 @@ class _home_page extends State<home_activity> {
                             Text("Hi, Sudeep!",
                               style: TextStyle(
                                 color: Colors.white,
+                                fontFamily: 'lato',
                                 fontSize: 18,
                               ),),
                             SizedBox(
@@ -84,6 +85,7 @@ class _home_page extends State<home_activity> {
                             Text("Welcome to Fintracon",
                               style: TextStyle(
                                 color: Colors.white,
+                                fontFamily: 'lato',
                                 fontSize: 14,
                               ),)
                           ],
@@ -128,6 +130,7 @@ class _home_page extends State<home_activity> {
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'lato',
                         fontSize: 18,
                       ),),
 
@@ -136,6 +139,7 @@ class _home_page extends State<home_activity> {
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
+                        fontFamily: 'lato',
                       ),),
                   ],
                 ),
@@ -163,6 +167,7 @@ class _home_page extends State<home_activity> {
                   ),
                   style: TextStyle(
                     color: Colors.white,
+                    fontFamily: 'lato',
                   ),
                 ),
               ),
@@ -214,14 +219,16 @@ class _home_page extends State<home_activity> {
                                       alignment: Alignment.centerLeft,
                                       child: Text(" TWITTER",style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 18,
+                                        fontSize: 16,
+                                        fontFamily: 'lato',
                                         fontWeight: FontWeight.bold,
                                       )),
                                     ),
                                     Text(" Twitter inc.",
                                         style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: 15,
+                                          fontSize: 13,
+                                          fontFamily: 'lato',
                                         )),
 
                                   ],

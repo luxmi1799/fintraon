@@ -40,7 +40,8 @@ class _otp_screen extends State<otp_screen>{
           ),
           elevation: 0,
           title: Text("Login / Signup",style: TextStyle(
-              color: Colors.white
+              color: Colors.white,
+              fontFamily: 'lato',
           ),),
           backgroundColor: Colors.transparent,
         ),
@@ -58,6 +59,7 @@ class _otp_screen extends State<otp_screen>{
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 28,
+                    fontFamily: 'lato',
                   ),),
               ),
             ),
@@ -69,6 +71,7 @@ class _otp_screen extends State<otp_screen>{
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
+                    fontFamily: 'lato',
                   ),),
               ),
             ),
@@ -80,6 +83,7 @@ class _otp_screen extends State<otp_screen>{
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'lato',
                     fontSize: 16,
                   ),),
               ),
@@ -130,6 +134,7 @@ class _otp_screen extends State<otp_screen>{
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
                     color: Colors.white,
+                    fontFamily: 'lato',
                   ),
                   ),
                   decoration: BoxDecoration(

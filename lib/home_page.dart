@@ -56,6 +56,7 @@ class _home_page extends State<home_page> {
             title: Text("Home",
               style: TextStyle(
               fontSize: 10,
+              fontFamily: 'lato',
               color: Colors.white
             ),),
             icon: Icon(Icons.home_filled),
@@ -64,6 +65,7 @@ class _home_page extends State<home_page> {
             title: Text("News",
               style: TextStyle(
                   fontSize: 10,
+                  fontFamily: 'lato',
                   color: Colors.white
               ),),
             icon: Icon(Icons.newspaper),
@@ -72,6 +74,7 @@ class _home_page extends State<home_page> {
             title: Text("Portfolio",
               style: TextStyle(
                   fontSize: 10,
+                  fontFamily: 'lato',
                   color: Colors.white
               ),),
             icon: Icon(Icons.monetization_on_rounded),
@@ -80,6 +83,7 @@ class _home_page extends State<home_page> {
             title: Text("Profile",
               style: TextStyle(
                   fontSize: 10,
+                  fontFamily: 'lato',
                   color: Colors.white
               ),),
             icon: Icon(Icons.person),
@@ -88,6 +92,7 @@ class _home_page extends State<home_page> {
             title: Text("Wallets",
               style: TextStyle(
                   fontSize: 10,
+                  fontFamily: 'lato',
                   color: Colors.white
               ),),
             icon: Icon(Icons.account_balance_wallet),

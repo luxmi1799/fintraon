@@ -57,6 +57,7 @@ class _create_account extends State<create_account> {
                    style: TextStyle(
                      color: Colors.white,
                      fontWeight: FontWeight.bold,
+                     fontFamily: 'lato',
                      fontSize: 20,
                    ),),
                  ),
@@ -69,7 +70,8 @@ class _create_account extends State<create_account> {
                    decoration: InputDecoration(
                      labelText: 'Phone Number',
                      labelStyle: TextStyle(
-                         color: Colors.white
+                         color: Colors.white,
+                         fontFamily: 'lato',
                      ),
                      enabledBorder: OutlineInputBorder(
                        borderSide: const BorderSide(width: 1.5, color: Colors.grey),
@@ -113,10 +115,12 @@ class _create_account extends State<create_account> {
                        hintStyle: TextStyle(
                          color: Colors.white,
                          fontSize: 14
+
                        ),
                        labelText: "Name",
                        labelStyle: TextStyle(
                          fontSize:15,
+                         fontFamily: 'lato',
                          color: Colors.white),
                        ),
                      ),
@@ -151,6 +155,7 @@ class _create_account extends State<create_account> {
                        labelText: "Email ID",
                        labelStyle: TextStyle(
                            fontSize:15,
+                           fontFamily: 'lato',
                            color: Colors.white),
                        suffixIcon: IconButton(
                          icon: Icon(

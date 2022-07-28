@@ -51,6 +51,7 @@ class _package extends State<portfolio> {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
+                        fontFamily: 'lato',
                         fontWeight: FontWeight.bold
                     )
                 ),
@@ -86,6 +87,7 @@ class _package extends State<portfolio> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontFamily: 'lato',
                         fontSize: 25
                     ),
                   ),
@@ -138,6 +140,7 @@ class _package extends State<portfolio> {
                                               style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
+                                              fontFamily: 'lato',
                                               fontSize: 20,
                                             ),),
                                           ),
@@ -154,6 +157,7 @@ class _package extends State<portfolio> {
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 22,
+                                            fontFamily: 'lato',
                                           ),),
                                           SizedBox(
                                             height: 6,
@@ -185,7 +189,8 @@ class _package extends State<portfolio> {
                                                     title: Text("",
                                                       style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 13
+                                                      fontSize: 13,
+                                                      fontFamily: 'lato',
                                                     ),),
                                                     subtitle:
                                                     Padding(
@@ -199,11 +204,13 @@ class _package extends State<portfolio> {
                                                                 children: <Widget>[
                                                                   SizedBox(height: 4,),
                                                                   Text("-> ",style: TextStyle(
-                                                                    color: Colors.white
+                                                                    color: Colors.white,
+                                                                    fontFamily: 'lato',
                                                                   ),),
                                                                   Expanded(
                                                                     child: Text(o,style: TextStyle(
-                                                                      color: Colors.white
+                                                                      color: Colors.white,
+                                                                      fontFamily: 'lato',
                                                                     ),),
                                                                   )
                                                                 ],
@@ -236,6 +243,7 @@ class _package extends State<portfolio> {
                                                           child: Text("BUY",style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                               fontSize: 17,
+                                                              fontFamily: 'lato',
                                                               color: Colors.white
                                                           ),),
                                                         ),

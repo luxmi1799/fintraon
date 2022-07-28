@@ -37,6 +37,7 @@ class _edit_profile extends State<edit_profile> {
             title: Text("Edit Profile",
                 style: TextStyle(
                 color: Colors.white,
+                  fontFamily: 'lato',
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
                 ),),
@@ -72,7 +73,8 @@ class _edit_profile extends State<edit_profile> {
                     decoration: InputDecoration(
                       labelText: 'Phone Number',
                       labelStyle: TextStyle(
-                          color: Colors.white
+                          color: Colors.white,
+                         fontFamily: 'lato',
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(width: 1.5, color: Colors.grey),
@@ -120,6 +122,7 @@ class _edit_profile extends State<edit_profile> {
                         labelText: "Name",
                         labelStyle: TextStyle(
                             fontSize:15,
+                            fontFamily: 'lato',
                             color: Colors.white),
                       ),
                     ),
@@ -154,6 +157,7 @@ class _edit_profile extends State<edit_profile> {
                         labelText: "Email Id",
                         labelStyle: TextStyle(
                             fontSize:15,
+                            fontFamily: 'lato',
                             color: Colors.white),
                       ),
                     ),
@@ -188,6 +192,7 @@ class _edit_profile extends State<edit_profile> {
                         labelText: "Address",
                         labelStyle: TextStyle(
                             fontSize:15,
+                            fontFamily: 'lato',
                             color: Colors.white),
                       ),
                     ),

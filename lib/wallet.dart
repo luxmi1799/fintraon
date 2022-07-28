@@ -46,6 +46,7 @@ class _wallet extends State<wallet> {
                      style: TextStyle(
                          color: Colors.white,
                          fontSize: 22,
+                         fontFamily: 'lato',
                          fontWeight: FontWeight.bold
                      )
                  ),
@@ -76,6 +77,7 @@ class _wallet extends State<wallet> {
                          Text(" Add Money",style: TextStyle(
                            fontWeight: FontWeight.bold,
                            color: Colors.white,
+                           fontFamily: 'lato',
                            fontSize: 18,
                          ),)
                        ],
@@ -104,7 +106,8 @@ class _wallet extends State<wallet> {
                              style: TextStyle(
                               // fontWeight: FontWeight.bold,
                                color: Colors.black,
-                               fontSize: 19
+                               fontSize: 19,
+                               fontFamily: 'lato',
                               ),
                              ),
 
@@ -116,7 +119,8 @@ class _wallet extends State<wallet> {
                                style: TextStyle(
                                    fontWeight: FontWeight.bold,
                                    color: Colors.black,
-                                   fontSize: 22
+                                   fontSize: 21,
+                                  fontFamily: 'lato',
                                ),
                              ),
                            ],
@@ -153,10 +157,12 @@ class _wallet extends State<wallet> {
                                  Text("₹ 500",style: TextStyle(
                                    color: Colors.white,
                                    fontWeight: FontWeight.bold,
+                                   fontFamily: 'lato',
                                    fontSize: 18,
                                  ),),
                                  Text("Debit",style: TextStyle(
                                    color: Colors.white,
+                                   fontFamily: 'lato',
                                    fontWeight: FontWeight.bold,
                                    fontSize: 18,
                                  ),),

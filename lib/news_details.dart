@@ -64,6 +64,7 @@ class _details extends State<news_details> {
                    Text("3 Sept 2020",
                      style: TextStyle(
                        color: Colors.white70,
+                       fontFamily: 'lato',
                      ),
                ),
 
@@ -108,7 +109,8 @@ class _details extends State<news_details> {
                    style: TextStyle(
                      fontSize: 21,
                      color: Color(0xffEC1C24),
-                     fontWeight: FontWeight.bold
+                     fontWeight: FontWeight.bold,
+                     fontFamily: 'lato',
                    ),
                  ),
                ),
@@ -119,6 +121,7 @@ class _details extends State<news_details> {
                    style: TextStyle(
                      fontSize: 16,
                      color: Colors.white,
+                     fontFamily: 'lato',
                    ),
                  ),
                ),
@@ -130,6 +133,7 @@ class _details extends State<news_details> {
              style: TextStyle(
                fontSize: 16,
                color: Colors.white,
+               fontFamily: 'lato',
              ),
            ),
          ),
