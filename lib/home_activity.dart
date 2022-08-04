@@ -1,6 +1,14 @@
+import 'package:animated_widgets/widgets/rotation_animated.dart';
+import 'package:animated_widgets/widgets/shake_animated_widget.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:hover_effect/hover_effect.dart';
+
+
+List image= ["assets/Google.png","assets/Microsoft.png","assets/Nike.png","assets/Spotify_icon.png","assets/twitter.png"];
+List title = ["Google","Microsoft","Nike","Spotify","Twitter"];
 
 class home_activity extends StatefulWidget{
   @override
@@ -11,6 +19,20 @@ class home_activity extends StatefulWidget{
 
 class _home_page extends State<home_activity> {
   bool details = false;
+  bool enabled = true;
+  var _controller = ScrollController();
+  ScrollPhysics _physics = ClampingScrollPhysics();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      if (_controller.position.pixels <= 56)
+        setState(() => _physics = ClampingScrollPhysics());
+      else
+        setState(() => _physics = BouncingScrollPhysics());
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -48,6 +70,7 @@ class _home_page extends State<home_activity> {
             )
         ),
         body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -97,21 +120,23 @@ class _home_page extends State<home_activity> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Row(
                         children: [
-                          SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: Icon(Icons.notifications,color: Colors.white,)
+                          ShakeAnimatedWidget(
+                            enabled: this.enabled,
+                            duration: Duration(milliseconds: 1500),
+                            shakeAngle: Rotation.deg(z: 40),
+                            curve: Curves.linear,
+                            child:Image.asset("assets/bell.gif",width: 32,height: 32,fit: BoxFit.cover,)
                           ),
 
                           SizedBox(
                             width: 6,
                           ),
 
-                          SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: Icon(Icons.adjust,color: Colors.white,)
-                          ),
+                          // SizedBox(
+                          //     width: 20,
+                          //     height: 20,
+                          //     child: Icon(Icons.adjust,color: Colors.white,)
+                          // ),
                         ],
                       ),
                     ),
@@ -158,12 +183,19 @@ class _home_page extends State<home_activity> {
                         borderSide: BorderSide(color: Colors.grey)),
 
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(30.0),
                       borderSide: BorderSide(
                         color: Colors.grey,
                         width: 2.0,
                       ),
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide(
+                        color: Color(0xffEC1C24),
+                        width: 2.0,
+                      ),
+                    )
                   ),
                   style: TextStyle(
                     color: Colors.white,
@@ -177,9 +209,10 @@ class _home_page extends State<home_activity> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   child: ListView.builder(
-                    itemCount: 9,
+                    controller: _controller,
+                    physics: _physics,
+                    itemCount: 5,
                     scrollDirection: Axis.vertical,
-                    physics: ScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, position) {
                       return  Padding(
@@ -197,18 +230,18 @@ class _home_page extends State<home_activity> {
                                     alignment: Alignment.center,
                                     children: [
                                       SizedBox(
-                                          width:50,
-                                          height: 48,
-                                          child: Image.asset("assets/twitercircle.png")),
-                                      SizedBox(
-                                          width:25,
-                                          height: 25,
-                                          child: Image.asset("assets/twitbird.png"))
+                                          width:40,
+                                          height: 40,
+                                          child: Image.asset(image[position])),
+                                      // SizedBox(
+                                      //     width:25,
+                                      //     height: 25,
+                                      //     child: Image.asset("assets/twitbird.png"))
                                     ]
                                 ),
 
                                 SizedBox(
-                                  width: 5,
+                                  width: 8,
                                 ),
                                 // ),
                                 Column(
@@ -217,7 +250,7 @@ class _home_page extends State<home_activity> {
                                   children: [
                                     Align(
                                       alignment: Alignment.centerLeft,
-                                      child: Text(" TWITTER",style: TextStyle(
+                                      child: Text(title[position],style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
                                         fontFamily: 'lato',
@@ -261,6 +294,7 @@ class _home_page extends State<home_activity> {
 
   Widget stock_details(BuildContext context){
     String doller = "\$";
+    Offset _offset = Offset.zero;
     return Scaffold(
       backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -309,11 +343,7 @@ class _home_page extends State<home_activity> {
                            SizedBox(
                                width:45,
                                height: 45,
-                               child: Image.asset("assets/twitercircle.png")),
-                           SizedBox(
-                               width:20,
-                               height: 20,
-                               child: Image.asset("assets/twitbird.png"))
+                               child: Image.asset("assets/Spotify_icon.png")),
                          ]
                      ),
                      SizedBox(
@@ -368,9 +398,9 @@ class _home_page extends State<home_activity> {
              child: Row(
                children: [
                  Container(
-                   height: 50.0,
+                   height: 65.0,
                    width: 1.9,
-                   color: Colors.tealAccent,
+                   color: Color(0xffEC1C24),
                    margin: const EdgeInsets.only(left: 10.0, right: 10.0),
                  ),
                  SizedBox(
@@ -384,7 +414,8 @@ class _home_page extends State<home_activity> {
                      Text.rich(
                        TextSpan(
                          children: [
-                           TextSpan(text: "\$226",
+                           WidgetSpan(child: Container(width: 20,height: 40,)),
+                           TextSpan(text: "\$ 226",
                                style: TextStyle(
                                    color: Colors.white,
                                    fontSize: 23,
@@ -410,7 +441,8 @@ class _home_page extends State<home_activity> {
                          Text.rich(
                            TextSpan(
                              children: [
-                               TextSpan(text: "\$224",
+                               WidgetSpan(child: Center(child: Image.asset('assets/rupeecoin.gif',width: 50,height: 30,fit: BoxFit.cover,))),
+                               TextSpan(text: "224",
                                    style: TextStyle(
                                        color: Colors.white,
                                        fontSize: 18,
@@ -433,7 +465,8 @@ class _home_page extends State<home_activity> {
                          Text.rich(
                            TextSpan(
                              children: [
-                               TextSpan(text: "+2,02",
+                               WidgetSpan(child:Image.asset("assets/upward.gif",width: 45,height: 20,fit: BoxFit.cover,)),
+                               TextSpan(text: "2,02",
                                    style: TextStyle(
                                        color: Colors.white,
                                        fontSize: 16,
@@ -475,216 +508,430 @@ class _home_page extends State<home_activity> {
              ),
            ),
 
-           Card(
-             color: Colors.white,
-             shape: RoundedRectangleBorder(
-               side: BorderSide(color: Colors.white, width: 1),
-               borderRadius: BorderRadius.circular(10),
-             ),
+           // Card(
+           //   color: Colors.white,
+           //   shape: RoundedRectangleBorder(
+           //     side: BorderSide(color: Colors.white, width: 1),
+           //     borderRadius: BorderRadius.circular(10),
+           //   ),
+           //   margin: EdgeInsets.all(20.0),
+           //   child: Container(
+           //     child: Column(
+           //       children: <Widget>[
+           //
+           //         Padding(
+           //           padding: const EdgeInsets.symmetric(vertical: 15.0),
+           //           child: Row(
+           //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+           //             children: [
+           //               Column(
+           //                 mainAxisAlignment: MainAxisAlignment.center,
+           //                 crossAxisAlignment: CrossAxisAlignment.center,
+           //                 children: [
+           //                   Padding(
+           //                     padding: const EdgeInsets.only(top: 8.0),
+           //                     child: Text("Open",
+           //                       style: TextStyle(
+           //                         color: Colors.grey[600],
+           //                         fontSize: 13,
+           //                         fontWeight: FontWeight.bold,
+           //
+           //                       ),
+           //                     ),
+           //                   ),
+           //
+           //                   SizedBox(
+           //                     height: 10,
+           //                   ),
+           //
+           //                   Text("224.5",
+           //                     style: TextStyle(
+           //                       color: Colors.black,
+           //                       fontSize: 16,
+           //                       fontWeight: FontWeight.bold,
+           //                     ),
+           //                   )
+           //                 ],
+           //               ),
+           //
+           //               Column(
+           //                 mainAxisAlignment: MainAxisAlignment.center,
+           //                 children: [
+           //                   Padding(
+           //                     padding: const EdgeInsets.only(top: 8.0),
+           //                     child: Text("High",
+           //                       style: TextStyle(
+           //                         color: Colors.grey[600],
+           //                         fontSize: 13,
+           //                         fontWeight: FontWeight.bold,
+           //
+           //                       ),
+           //                     ),
+           //                   ),
+           //
+           //                   SizedBox(
+           //                     height: 10,
+           //                   ),
+           //
+           //                   Text("224.5",
+           //                     style: TextStyle(
+           //                       color: Colors.black,
+           //                       fontSize: 16,
+           //                       fontWeight: FontWeight.bold,
+           //                     ),
+           //                   )
+           //                 ],
+           //               ),
+           //
+           //               Column(
+           //                 mainAxisAlignment: MainAxisAlignment.center,
+           //                 children: [
+           //                   Padding(
+           //                     padding: const EdgeInsets.only(top: 8.0),
+           //                     child: Text("Low",
+           //                       style: TextStyle(
+           //                         color: Colors.grey[600],
+           //                         fontSize: 13,
+           //                         fontWeight: FontWeight.bold,
+           //                       ),
+           //                     ),
+           //                   ),
+           //
+           //                   SizedBox(
+           //                     height: 10,
+           //                   ),
+           //
+           //                   Text("224.5",
+           //                     style: TextStyle(
+           //                       color: Colors.black,
+           //                       fontSize: 16,
+           //                       fontWeight: FontWeight.bold,
+           //                     ),
+           //                   )
+           //                 ],
+           //               ),
+           //
+           //
+           //             ],
+           //           ),
+           //         ),
+           //
+           //         Padding(
+           //           padding: const EdgeInsets.symmetric(vertical: 15.0),
+           //           child: Row(
+           //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+           //             children: [
+           //               Column(
+           //                 mainAxisAlignment: MainAxisAlignment.center,
+           //                 children: [
+           //                   Padding(
+           //                     padding: const EdgeInsets.only(top: 8.0),
+           //                     child: Text("Volume",
+           //                       style: TextStyle(
+           //                         color: Colors.grey[600],
+           //                         fontSize: 13,
+           //                         fontWeight: FontWeight.bold,
+           //
+           //                       ),
+           //                     ),
+           //                   ),
+           //
+           //                   SizedBox(
+           //                     height: 10,
+           //                   ),
+           //
+           //                   Text("224.5",
+           //                     style: TextStyle(
+           //                       color: Colors.black,
+           //                       fontSize: 16,
+           //                       fontWeight: FontWeight.bold,
+           //                     ),
+           //                   )
+           //                 ],
+           //               ),
+           //
+           //               Column(
+           //                 mainAxisAlignment: MainAxisAlignment.center,
+           //                 children: [
+           //                   Padding(
+           //                     padding: const EdgeInsets.only(top: 8.0),
+           //                     child: Text("Avg. Volume",
+           //                       style: TextStyle(
+           //                         color: Colors.grey[600],
+           //                         fontSize: 13,
+           //                         fontWeight: FontWeight.bold,
+           //
+           //                       ),
+           //                     ),
+           //                   ),
+           //
+           //                   SizedBox(
+           //                     height: 10,
+           //                   ),
+           //
+           //                   Text("224.5",
+           //                     style: TextStyle(
+           //                       color: Colors.black,
+           //                       fontSize: 16,
+           //                       fontWeight: FontWeight.bold,
+           //                     ),
+           //                   )
+           //                 ],
+           //               ),
+           //
+           //               Column(
+           //                 mainAxisAlignment: MainAxisAlignment.center,
+           //                 children: [
+           //                   Padding(
+           //                     padding: const EdgeInsets.only(top: 8.0),
+           //                     child: Text("Market Cap",
+           //                       style: TextStyle(
+           //                         color: Colors.grey[600],
+           //                         fontSize: 13,
+           //                         fontWeight: FontWeight.bold,
+           //
+           //                       ),
+           //                     ),
+           //                   ),
+           //
+           //                   SizedBox(
+           //                     height: 10,
+           //                   ),
+           //
+           //                   Text("224.5",
+           //                     style: TextStyle(
+           //                       color: Colors.black,
+           //                       fontSize: 16,
+           //                       fontWeight: FontWeight.bold,
+           //                     ),
+           //                   )
+           //                 ],
+           //               ),
+           //
+           //
+           //             ],
+           //           ),
+           //         ),
+           //
+           //       ],
+           //     ),
+           //   ),
+           // ),
+
+           Container(
+             width: MediaQuery.of(context).size.width,
              margin: EdgeInsets.all(20.0),
-             child: Container(
-               child: Column(
-                 children: <Widget>[
+             height: 180,
+             child: HoverCard(
+               builder: (context, hovering) {
+                 return  Container(
+                   color: Color(0xFFE9E9E9),
+                   child: Column(
+                     children: <Widget>[
 
-                   Padding(
-                     padding: const EdgeInsets.symmetric(vertical: 15.0),
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           crossAxisAlignment: CrossAxisAlignment.center,
+                       Padding(
+                         padding: const EdgeInsets.symmetric(vertical: 15.0),
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                            children: [
-                             Padding(
-                               padding: const EdgeInsets.only(top: 8.0),
-                               child: Text("Open",
-                                 style: TextStyle(
-                                   color: Colors.grey[600],
-                                   fontSize: 13,
-                                   fontWeight: FontWeight.bold,
+                             Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               crossAxisAlignment: CrossAxisAlignment.center,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.only(top: 8.0),
+                                   child: Text("Open",
+                                     style: TextStyle(
+                                       color: Colors.grey[600],
+                                       fontSize: 13,
+                                       fontWeight: FontWeight.bold,
 
+                                     ),
+                                   ),
                                  ),
-                               ),
+
+                                 SizedBox(
+                                   height: 10,
+                                 ),
+
+                                 Text("224.5",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.bold,
+                                   ),
+                                 )
+                               ],
                              ),
 
-                             SizedBox(
-                               height: 10,
+                             Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.only(top: 8.0),
+                                   child: Text("High",
+                                     style: TextStyle(
+                                       color: Colors.grey[600],
+                                       fontSize: 13,
+                                       fontWeight: FontWeight.bold,
+
+                                     ),
+                                   ),
+                                 ),
+
+                                 SizedBox(
+                                   height: 10,
+                                 ),
+
+                                 Text("224.5",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.bold,
+                                   ),
+                                 )
+                               ],
                              ),
 
-                             Text("224.5",
-                               style: TextStyle(
-                                 color: Colors.black,
-                                 fontSize: 16,
-                                 fontWeight: FontWeight.bold,
-                               ),
-                             )
+                             Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.only(top: 8.0),
+                                   child: Text("Low",
+                                     style: TextStyle(
+                                       color: Colors.grey[600],
+                                       fontSize: 13,
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                 ),
+
+                                 SizedBox(
+                                   height: 10,
+                                 ),
+
+                                 Text("224.5",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.bold,
+                                   ),
+                                 )
+                               ],
+                             ),
+
+
                            ],
                          ),
+                       ),
 
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
+                       Padding(
+                         padding: const EdgeInsets.symmetric(vertical: 15.0),
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                            children: [
-                             Padding(
-                               padding: const EdgeInsets.only(top: 8.0),
-                               child: Text("High",
-                                 style: TextStyle(
-                                   color: Colors.grey[600],
-                                   fontSize: 13,
-                                   fontWeight: FontWeight.bold,
+                             Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.only(top: 8.0),
+                                   child: Text("Volume",
+                                     style: TextStyle(
+                                       color: Colors.grey[600],
+                                       fontSize: 13,
+                                       fontWeight: FontWeight.bold,
 
+                                     ),
+                                   ),
                                  ),
-                               ),
+
+                                 SizedBox(
+                                   height: 10,
+                                 ),
+
+                                 Text("224.5",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.bold,
+                                   ),
+                                 )
+                               ],
                              ),
 
-                             SizedBox(
-                               height: 10,
+                             Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.only(top: 8.0),
+                                   child: Text("Avg. Volume",
+                                     style: TextStyle(
+                                       color: Colors.grey[600],
+                                       fontSize: 13,
+                                       fontWeight: FontWeight.bold,
+
+                                     ),
+                                   ),
+                                 ),
+
+                                 SizedBox(
+                                   height: 10,
+                                 ),
+
+                                 Text("224.5",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.bold,
+                                   ),
+                                 )
+                               ],
                              ),
 
-                             Text("224.5",
-                               style: TextStyle(
-                                 color: Colors.black,
-                                 fontSize: 16,
-                                 fontWeight: FontWeight.bold,
-                               ),
-                             )
+                             Column(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.only(top: 8.0),
+                                   child: Text("Market Cap",
+                                     style: TextStyle(
+                                       color: Colors.grey[600],
+                                       fontSize: 13,
+                                       fontWeight: FontWeight.bold,
+
+                                     ),
+                                   ),
+                                 ),
+
+                                 SizedBox(
+                                   height: 10,
+                                 ),
+
+                                 Text("224.5",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     fontSize: 16,
+                                     fontWeight: FontWeight.bold,
+                                   ),
+                                 )
+                               ],
+                             ),
+
+
                            ],
                          ),
+                       ),
 
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Padding(
-                               padding: const EdgeInsets.only(top: 8.0),
-                               child: Text("Low",
-                                 style: TextStyle(
-                                   color: Colors.grey[600],
-                                   fontSize: 13,
-                                   fontWeight: FontWeight.bold,
-                                 ),
-                               ),
-                             ),
-
-                             SizedBox(
-                               height: 10,
-                             ),
-
-                             Text("224.5",
-                               style: TextStyle(
-                                 color: Colors.black,
-                                 fontSize: 16,
-                                 fontWeight: FontWeight.bold,
-                               ),
-                             )
-                           ],
-                         ),
-
-
-                       ],
-                     ),
+                     ],
                    ),
-
-                   Padding(
-                     padding: const EdgeInsets.symmetric(vertical: 15.0),
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                       children: [
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Padding(
-                               padding: const EdgeInsets.only(top: 8.0),
-                               child: Text("Volume",
-                                 style: TextStyle(
-                                   color: Colors.grey[600],
-                                   fontSize: 13,
-                                   fontWeight: FontWeight.bold,
-
-                                 ),
-                               ),
-                             ),
-
-                             SizedBox(
-                               height: 10,
-                             ),
-
-                             Text("224.5",
-                               style: TextStyle(
-                                 color: Colors.black,
-                                 fontSize: 16,
-                                 fontWeight: FontWeight.bold,
-                               ),
-                             )
-                           ],
-                         ),
-
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Padding(
-                               padding: const EdgeInsets.only(top: 8.0),
-                               child: Text("Avg. Volume",
-                                 style: TextStyle(
-                                   color: Colors.grey[600],
-                                   fontSize: 13,
-                                   fontWeight: FontWeight.bold,
-
-                                 ),
-                               ),
-                             ),
-
-                             SizedBox(
-                               height: 10,
-                             ),
-
-                             Text("224.5",
-                               style: TextStyle(
-                                 color: Colors.black,
-                                 fontSize: 16,
-                                 fontWeight: FontWeight.bold,
-                               ),
-                             )
-                           ],
-                         ),
-
-                         Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Padding(
-                               padding: const EdgeInsets.only(top: 8.0),
-                               child: Text("Market Cap",
-                                 style: TextStyle(
-                                   color: Colors.grey[600],
-                                   fontSize: 13,
-                                   fontWeight: FontWeight.bold,
-
-                                 ),
-                               ),
-                             ),
-
-                             SizedBox(
-                               height: 10,
-                             ),
-
-                             Text("224.5",
-                               style: TextStyle(
-                                 color: Colors.black,
-                                 fontSize: 16,
-                                 fontWeight: FontWeight.bold,
-                               ),
-                             )
-                           ],
-                         ),
-
-
-                       ],
-                     ),
-                   ),
-
-                 ],
-               ),
+                 );
+               },
+               depth: 12,
+               depthColor: Colors.grey,
+               shadow: BoxShadow(color: Color(0xffEC1C24), blurRadius: 30, spreadRadius: -20, offset: Offset(0, 30)),
              ),
            ),
-
          ],
        ),
       ),

@@ -55,6 +55,7 @@ class _wallet extends State<wallet> {
            ),
          ),
          body: SingleChildScrollView(
+           physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
            child: Column(
              children: [
                Padding(
@@ -73,7 +74,7 @@ class _wallet extends State<wallet> {
 
                      Row(
                        children: [
-                         Image.asset("assets/addmoney.png"),
+                         Image.asset("assets/addmo.gif",width: 80,height: 80,),
                          Text(" Add Money",style: TextStyle(
                            fontWeight: FontWeight.bold,
                            color: Colors.white,
@@ -119,7 +120,7 @@ class _wallet extends State<wallet> {
                                style: TextStyle(
                                    fontWeight: FontWeight.bold,
                                    color: Colors.black,
-                                   fontSize: 21,
+                                   fontSize: 20,
                                   fontFamily: 'lato',
                                ),
                              ),
@@ -129,6 +130,93 @@ class _wallet extends State<wallet> {
                      ),
                ),
 
+
+               Padding(
+                 padding: const EdgeInsets.symmetric(vertical:10.0,horizontal: 0),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   children: [
+                     Container(
+                       width:80,
+                       height: 60,
+                       color:Colors.white.withOpacity(0.15),
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: [
+                           SizedBox(
+                             height: 5,
+                           ),
+                           //Image.asset("assets/ru.gif",width: 50,height: 20,),
+                           SizedBox(
+                             height: 5,
+                           ),
+                           Center(
+                             child: Text("Wallet",style: TextStyle(
+                               color: Colors.black,
+                               fontSize: 10,
+                               fontWeight: FontWeight.bold
+                             ),),
+                           )
+                         ],
+                       ),
+                     ),
+
+                     Container(
+                       width:80,
+                       height: 60,
+                       color:Colors.white.withOpacity(0.15),
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: [
+                           SizedBox(
+                             height: 5,
+                           ),
+                          // Image.asset("assets/credit.png"),
+                           SizedBox(
+                             height: 5,
+                           ),
+                           Center(
+                             child: Text("Coins",style: TextStyle(
+                               color: Colors.black,
+                               fontSize: 10,
+                               fontWeight: FontWeight.bold
+                             ),),
+                           )
+                         ],
+                       ),
+                     ),
+
+                     Container(
+                       width:80,
+                       height: 60,
+                       color:Colors.white.withOpacity(0.15),
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: [
+                           SizedBox(
+                             height: 5,
+                           ),
+                          // Image.asset("assets/setting.png"),
+                           SizedBox(
+                             height: 5,
+                           ),
+                           Center(
+                             child: Text("Add money",style: TextStyle(
+                               color: Colors.black,
+                               fontSize: 10,
+                               fontWeight: FontWeight.bold
+                             ),),
+                           )
+                         ],
+                       ),
+                     ),
+
+                   ],
+                 ),
+               ),
 
                Padding(
                  padding: const EdgeInsets.only(left: 10.0,right: 10,top: 30),
@@ -160,12 +248,17 @@ class _wallet extends State<wallet> {
                                    fontFamily: 'lato',
                                    fontSize: 18,
                                  ),),
-                                 Text("Debit",style: TextStyle(
-                                   color: Colors.white,
-                                   fontFamily: 'lato',
-                                   fontWeight: FontWeight.bold,
-                                   fontSize: 18,
-                                 ),),
+                                 Row(
+                                   children: [
+                                     Image.asset("assets/check.gif",width: 70,height: 70,fit: BoxFit.cover,),
+                                     Text("Debit",style: TextStyle(
+                                       color: Colors.white,
+                                       fontFamily: 'lato',
+                                       fontWeight: FontWeight.bold,
+                                       fontSize: 18,
+                                     ),),
+                                   ],
+                                 ),
                                ],
                              ),
                            ),

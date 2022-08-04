@@ -7,6 +7,10 @@ import 'package:frig/home_page.dart';
 import 'package:frig/login.dart';
 import 'package:lottie/lottie.dart';
 
+
+const double _shadowHeight = 4;
+double _position = 4;
+
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
 
@@ -15,6 +19,7 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
+  final double _height = 55 - _shadowHeight;
   late AnimationController _lottieAnimation;
   var expanded = false;
   double _bigFontSize = kIsWeb ? 234 : 178;
@@ -58,6 +63,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       alignment: Alignment.center,
       children:
@@ -142,41 +148,81 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             ),
           ),
 
+
+
+
         Positioned(
           left: 20,
           right: 20,
           bottom: 20,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20,bottom: 20,right: 20),
-            child: Align(
-              alignment: Alignment.bottomCenter,
+          child:Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: GestureDetector(
+              onTapUp: (_) {
+                setState(() {
+                  _position = 4;
+                });
+              },
+              onTapDown: (_) {
+                setState(() {
+                  _position = 0;
+                });
+              },
+              onTapCancel: () {
+                setState(() {
+                  _position = 4;
+                });
+              },
               child: Container(
+                height: _height + _shadowHeight,
                 width: MediaQuery.of(context).size.width * 0.8,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: Color(0xffEC1C24),
-                ),
-                child: FlatButton(
-                  onPressed: (){
-                    setState(() {
-                    });
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => login()));
-                  },
-                  child: Text("GET STARTED",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontFamily: 'lato',
-                      fontWeight: FontWeight.bold,
-                      backgroundColor:  Color(0xffEC1C24),
-                    ),),
-                  // color: Colors.white,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        height: _height,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Color(0xffEC1C24).withOpacity(0.5),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(16),
+                          ),
+                        ),
+                      ),
+                    ),
+                    AnimatedPositioned(
+                      curve: Curves.easeIn,
+                      bottom: _position,
+                      duration: Duration(milliseconds: 70),
+                      child: Container(
+                        height: _height,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Color(0xffEC1C24),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'GET STARTED',
+                            style: TextStyle(
+                              decoration: TextDecoration.none,
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontFamily: 'lato',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),)
+          ),
+        )
       ]
     );
   }

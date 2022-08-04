@@ -62,7 +62,7 @@ class _login_body extends State<_login> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 120.0,bottom: 10),
+                    padding: const EdgeInsets.only(top: 60.0,bottom: 10),
                     child: Center(
                       child:Container(
                         width: 150,

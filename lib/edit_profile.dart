@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 
+const double _shadowHeight = 4;
+double _position = 4;
+
 class edit_profile extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -10,6 +13,7 @@ class edit_profile extends StatefulWidget{
 }
 
 class _edit_profile extends State<edit_profile> {
+  final double _height = 55 - _shadowHeight;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -199,270 +203,69 @@ class _edit_profile extends State<edit_profile> {
                   ),
                 ),
 
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                //
-                //   child: Form(
-                //     child: TextFormField(
-                //       decoration: InputDecoration(
-                //         focusedBorder: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(15.0),
-                //           borderSide: BorderSide(
-                //             color: Colors.grey,
-                //           ),
-                //         ),
-                //         enabledBorder: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(15.0),
-                //           borderSide: BorderSide(
-                //             color: Colors.grey,
-                //             width: 2.0,
-                //           ),
-                //         ),
-                //         border: const OutlineInputBorder(),
-                //         hintText: 'enter Password',
-                //         hintStyle: TextStyle(
-                //             color: Colors.white,
-                //             fontSize: 14
-                //         ),
-                //         labelText: "Confirm Password",
-                //         labelStyle: TextStyle(
-                //             fontSize:15,
-                //             color: Colors.white),
-                //         suffixIcon: IconButton(
-                //           icon: Icon(
-                //             // Based on passwordVisible state choose the icon
-                //             _passwordVisible
-                //                 ? Icons.visibility
-                //                 : Icons.visibility_off,
-                //
-                //              color: Colors.white,
-                //           ),
-                //           onPressed: () {
-                //             // Update the state i.e. toogle the state of passwordVisible variable
-                //             setState(() {
-                //               _passwordVisible = !_passwordVisible;
-                //             });
-                //           },
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-
-
-
-                /* Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                 child: Form(
-                   child: TextFormField(
-                     decoration: InputDecoration(
-                       focusedBorder: OutlineInputBorder(
-                         borderRadius: BorderRadius.circular(15.0),
-                         borderSide: BorderSide(
-                           color: Colors.grey,
-                         ),
-                       ),
-                       enabledBorder: OutlineInputBorder(
-                         borderRadius: BorderRadius.circular(15.0),
-                         borderSide: BorderSide(
-                           color: Colors.grey,
-                           width: 2.0,
-                         ),
-                       ),
-                       border: const OutlineInputBorder(),
-                       hintText: 'enter name',
-                       hintStyle: TextStyle(
-                           color: Colors.white,
-                           fontSize: 14
-                       ),
-                       labelText: "Name On Card",
-                       labelStyle: TextStyle(
-                           fontSize:15,
-                           color: Colors.white),
-                     ),
-                   ),
-                 ),
-               ),
-
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                 child: Form(
-                   child: TextFormField(
-                     keyboardType: TextInputType.number,
-                     decoration: InputDecoration(
-                       focusedBorder: OutlineInputBorder(
-                         borderRadius: BorderRadius.circular(15.0),
-                         borderSide: BorderSide(
-                           color: Colors.grey,
-                         ),
-                       ),
-                       enabledBorder: OutlineInputBorder(
-                         borderRadius: BorderRadius.circular(15.0),
-                         borderSide: BorderSide(
-                           color: Colors.grey,
-                           width: 2.0,
-                         ),
-                       ),
-                       border: const OutlineInputBorder(),
-                       hintText: 'enter name',
-                       hintStyle: TextStyle(
-                           color: Colors.white,
-                           fontSize: 14
-                       ),
-                       labelText: "Card Number",
-                       labelStyle: TextStyle(
-                           fontSize:15,
-                           color: Colors.white),
-                     ),
-                     obscureText: true,
-                   ),
-                 ),
-               ),
-
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                 child: Form(
-                   child: TextFormField(
-                     keyboardType: TextInputType.number,
-                     decoration: InputDecoration(
-                       focusedBorder: OutlineInputBorder(
-                         borderRadius: BorderRadius.circular(15.0),
-                         borderSide: BorderSide(
-                           color: Colors.grey,
-                         ),
-                       ),
-                       enabledBorder: OutlineInputBorder(
-                         borderRadius: BorderRadius.circular(15.0),
-                         borderSide: BorderSide(
-                           color: Colors.grey,
-                           width: 2.0,
-                         ),
-                       ),
-                       border: const OutlineInputBorder(),
-                       hintText: 'enter date',
-                       hintStyle: TextStyle(
-                           color: Colors.white,
-                           fontSize: 14
-                       ),
-                       labelText: "Expiration Date",
-                       labelStyle: TextStyle(
-                           fontSize:15,
-                           color: Colors.white),
-                     ),
-                   ),
-                 ),
-               ),
-
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                   children: [
-                     Expanded(
-                       child: Padding(
-                         padding: const EdgeInsets.all(0),
-                         child: Form(
-                           child: TextFormField(
-                             keyboardType: TextInputType.number,
-                             decoration: InputDecoration(
-                               focusedBorder: OutlineInputBorder(
-                                 borderRadius: BorderRadius.circular(15.0),
-                                 borderSide: BorderSide(
-                                   color: Colors.grey,
-                                 ),
-                               ),
-                               enabledBorder: OutlineInputBorder(
-                                 borderRadius: BorderRadius.circular(15.0),
-                                 borderSide: BorderSide(
-                                   color: Colors.grey,
-                                   width: 2.0,
-                                 ),
-                               ),
-                               border: const OutlineInputBorder(),
-                               hintText: 'enter CVV',
-                               hintStyle: TextStyle(
-                                   color: Colors.white,
-                                   fontSize: 14
-                               ),
-                               labelText: "CVV",
-                               labelStyle: TextStyle(
-                                   fontSize:15,
-                                   color: Colors.white),
-                             ),
-                           ),
-                         ),
-                       ),
-                     ),
-
-                     SizedBox(
-                       width: 8,
-                     ),
-
-                     Expanded(
-                       child: Padding(
-                         padding: const EdgeInsets.all(0),
-                         child: Form(
-                           child: TextFormField(
-                             keyboardType: TextInputType.number,
-                             decoration: InputDecoration(
-                               focusedBorder: OutlineInputBorder(
-                                 borderRadius: BorderRadius.circular(15.0),
-                                 borderSide: BorderSide(
-                                   color: Colors.grey,
-                                 ),
-                               ),
-                               enabledBorder: OutlineInputBorder(
-                                 borderRadius: BorderRadius.circular(15.0),
-                                 borderSide: BorderSide(
-                                   color: Colors.grey,
-                                   width: 2.0,
-                                 ),
-                               ),
-                               border: const OutlineInputBorder(),
-                               hintText: 'enter code',
-                               hintStyle: TextStyle(
-                                   color: Colors.white,
-                                   fontSize: 14
-                               ),
-                               labelText: "Coupan Code",
-                               labelStyle: TextStyle(
-                                   fontSize:15,
-                                   color: Colors.white),
-                             ),
-                           ),
-                         ),
-                       ),
-                     ),
-                   ],
-                 ),
-               ),*/
-
-
-
                 Padding(
                   padding: const EdgeInsets.only(left: 20,bottom: 20,right: 20,top: 50),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
+                  child:  GestureDetector(
+                    onTapUp: (_) {
+                      setState(() {
+                        _position = 4;
+                      });
+                    },
+                    onTapDown: (_) {
+                      setState(() {
+                        _position = 0;
+                      });
+                    },
+                    onTapCancel: () {
+                      setState(() {
+                        _position = 4;
+                      });
+                    },
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xffEC1C24),
-                      ),
-                      child: FlatButton(
-                        onPressed: (){
-
-                        },
-                        child: Text("Submit",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            backgroundColor:  Color(0xffEC1C24),
-                          ),),
-                        // color: Colors.white,
+                      height: _height + _shadowHeight,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            bottom: 0,
+                            child: Container(
+                              height: _height,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              decoration: BoxDecoration(
+                                color: Color(0xffEC1C24).withOpacity(0.5),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(16),
+                                ),
+                              ),
+                            ),
+                          ),
+                          AnimatedPositioned(
+                            curve: Curves.easeIn,
+                            bottom: _position,
+                            duration: Duration(milliseconds: 70),
+                            child: Container(
+                              height: _height,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              decoration: BoxDecoration(
+                                color: Color(0xffEC1C24),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(4),
+                                ),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Submit',
+                                  style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontFamily: 'lato',
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
