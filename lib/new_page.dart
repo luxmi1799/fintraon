@@ -29,6 +29,7 @@ class _news extends State<news> {
      return Scaffold(
          backgroundColor: Colors.black,
          appBar: AppBar(
+           automaticallyImplyLeading: false,
            centerTitle: true,
            leading: InkWell(
                onTap: (){

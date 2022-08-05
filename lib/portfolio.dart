@@ -42,6 +42,7 @@ class _package extends State<portfolio> {
         //backgroundColor: Color(0xff909090),
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           leading: InkWell(
               onTap: (){
