@@ -120,7 +120,7 @@ class _login_body extends State<_login> {
                               ),
                             ),
                           ),
-                          Expanded(
+                          /*Expanded(
                             child: Container(
                               height: 50,
                               child: FlatButton(
@@ -145,7 +145,7 @@ class _login_body extends State<_login> {
                                   ),),
                               ),
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ),

@@ -73,6 +73,7 @@ dev_dependencies:
   carousel_slider: ^4.1.1
   simple_animations: ^4.2.0
   wave: ^0.2.2
+  rename: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

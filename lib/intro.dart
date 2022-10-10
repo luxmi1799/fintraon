@@ -54,7 +54,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
           (value) => Future.delayed(Duration(seconds: 1)).then(
             (value) => _lottieAnimation.forward().then(
               (value) => Navigator.of(context)
-              .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => home_page()), (route) => false),
+              .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => login()), (route) => false),
         ),
       ),
     );

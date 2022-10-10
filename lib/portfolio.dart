@@ -69,7 +69,7 @@ class _package extends State<portfolio> {
           ),
         ),
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          //physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           child: Column(
             children: [
               Padding(
@@ -120,13 +120,13 @@ class _package extends State<portfolio> {
 
 
               Padding(
-                padding:  EdgeInsets.only(left: 10.0,right: 10),
+                padding:  EdgeInsets.only(left: 25.0,right: 10),
                 child: Center(
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: 320,
                     child: ListView.builder(
-                      itemCount: 3,
+                      itemCount: 1,
                       scrollDirection: Axis.horizontal,
                       physics: ScrollPhysics(),
                       shrinkWrap: true,
@@ -136,7 +136,7 @@ class _package extends State<portfolio> {
                           child: Card(
                             color: Colors.white.withOpacity(0.0001),
                             child: Container(
-                              width: 230,
+                              width: MediaQuery.of(context).size.width*0.75,
                               decoration: BoxDecoration(
                                 image:  new DecorationImage(
                                   image: ExactAssetImage('assets/red.png'),
