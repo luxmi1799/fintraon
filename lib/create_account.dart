@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frig/home_activity.dart';
 import 'package:frig/home_page.dart';
 import 'package:frig/sign_in.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
 
 class create_account extends StatefulWidget{
   @override
@@ -14,6 +19,33 @@ class create_account extends StatefulWidget{
 class _create_account extends State<create_account> {
   bool _passwordVisible = true;
   bool isChecked = false;
+  var getdata;
+  var user_idd;
+  String phonenum = "";
+  final emailcontroller = new TextEditingController();
+  final namecontroller = new TextEditingController();
+  final phonecontroller = new TextEditingController();
+
+
+  void initState() {
+    super.initState();
+    // loading(context);
+    Future.delayed(Duration(seconds: 2), () {
+    });
+    get_otp(context);
+    // isNumeric("8076799976");
+  }
+
+  get_otp(BuildContext context) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      //  Navigator.pop(context);
+      phonenum = prefs.getString('mobile_number')!;
+      phonecontroller.text = phonenum;
+    });
+    print("phonem$phonenum");
+  }
+
   @override
   Widget build(BuildContext context) {
      return Stack(
@@ -66,10 +98,16 @@ class _create_account extends State<create_account> {
                Padding(
                  padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 15),
                  child: IntlPhoneField(
+                   controller: phonecontroller,
+                  // enabled: false,
+                   readOnly: true,
+                   style: TextStyle(
+                     color: Colors.white
+                   ),
                    initialCountryCode: 'IN',
                    decoration: InputDecoration(
-                     labelText: 'Phone Number',
-                     labelStyle: TextStyle(
+                     hintText: 'Phone Number',
+                     hintStyle: TextStyle(
                          color: Colors.white,
                          fontFamily: 'lato',
                      ),
@@ -96,6 +134,10 @@ class _create_account extends State<create_account> {
 
                  child: Form(
                    child: TextFormField(
+                     style: TextStyle(
+                       color: Colors.white
+                     ),
+                     controller: namecontroller,
                      decoration: InputDecoration(
                        focusedBorder: OutlineInputBorder(
                          borderRadius: BorderRadius.circular(15.0),
@@ -132,6 +174,10 @@ class _create_account extends State<create_account> {
 
                  child: Form(
                    child: TextFormField(
+                     style: TextStyle(
+                         color: Colors.white
+                     ),
+                     controller: emailcontroller,
                      decoration: InputDecoration(
                        focusedBorder: OutlineInputBorder(
                          borderRadius: BorderRadius.circular(15.0),
@@ -157,22 +203,6 @@ class _create_account extends State<create_account> {
                            fontSize:15,
                            fontFamily: 'lato',
                            color: Colors.white),
-                       suffixIcon: IconButton(
-                         icon: Icon(
-                           // Based on passwordVisible state choose the icon
-                           _passwordVisible
-                               ? Icons.visibility
-                               : Icons.visibility_off,
-                           color: Colors.white,
-                           // color: Theme.of(context).primaryColorDark,
-                         ),
-                         onPressed: () {
-                           // Update the state i.e. toogle the state of passwordVisible variable
-                           setState(() {
-                             _passwordVisible = !_passwordVisible;
-                           });
-                         },
-                     ),
                    ),
                  ),
                ),
@@ -469,9 +499,10 @@ class _create_account extends State<create_account> {
                      ),
                      child: FlatButton(
                        onPressed: (){
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));
+                         signup_details(emailcontroller.text, phonenum, namecontroller.text);
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));
                        },
-                       child: Text("SIGN UP WITH ₹ 300 Rs. PLAN",
+                       child: Text("SIGN UP",
                          textAlign: TextAlign.center,
                          style: TextStyle(
                            color: Colors.white,
@@ -502,5 +533,84 @@ class _create_account extends State<create_account> {
       return  Color(0xffEC1C24);
     }
     return Colors.red;
+  }
+
+  signup_details(String email,String mobile , String name ) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String postUrl = "https://fintracon.in/mobile-authenticate/update-profile.php";
+    print("stringrequest");
+    var request = new http.MultipartRequest(
+        "POST", Uri.parse(postUrl));
+    request.fields['Email'] = email;
+    request.fields['Name'] = name;
+    request.fields['Mobile'] = mobile;
+    request.send().then((response) {
+      http.Response.fromStream(response).then((onValue) {
+        try {
+          Navigator.pop(context);
+          print("onValue${onValue.body}");
+          Map mapRes = json.decode(onValue.body);
+
+          var success = mapRes["commandResult"]["success"];
+          var msg = mapRes["commandResult"]["message"];
+
+          if(success == 1){
+            var email= mapRes["commandResult"]["data"]["email"];
+            var name = mapRes["commandResult"]["data"]["name"];
+            // var user_id = mapRes["commandResult"]["user_id"];
+            print("useruser$user_idd");
+            setState(() {
+              getdata = email;
+              prefs.setString("email",email);
+              prefs.setString("name",name);
+              userdata(user_idd);
+            });
+            //Navigator.pop(context);
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));
+          }
+          else{
+            Fluttertoast.showToast(
+                msg: msg,
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1
+            );
+          }
+          print("getdatata$getdata)");
+
+        } catch (e) {
+          print("response$e");
+        }
+      });
+    });
+  }
+
+  userdata(String UserId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String postUrl = "https://fintracon.in/mobile-authenticate/userById.php";
+    print("stringrequest");
+    var request = new http.MultipartRequest(
+        "POST", Uri.parse(postUrl));
+    request.fields['UserId'] = UserId;
+    request.send().then((response) {
+      http.Response.fromStream(response).then((onValue) {
+        try {
+          print("onValue1${onValue.body}");
+          Map mapRes = json.decode(onValue.body);
+          var emaildetail= mapRes["commandResult"]["data"]["Email"];
+          var namedetail= mapRes["commandResult"]["data"]["Name"];
+          var Mobile= mapRes["commandResult"]["data"]["Mobile"];
+          setState(() {
+            prefs.setString("email_id","$emaildetail");
+            prefs.setString("name_user","$namedetail");
+            prefs.setString("Mobile","$Mobile");
+          });
+          //   print("getdatata$email $name)");
+
+        } catch (e) {
+          print("response$e");
+        }
+      });
+    });
   }
 }

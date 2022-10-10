@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class news_details extends StatefulWidget{
   @override
@@ -8,10 +12,32 @@ class news_details extends StatefulWidget{
 }
 
 class _details extends State<news_details> {
+
+  var blodid;
+  var blogdetail;
+
+  void initState() {
+    super.initState();
+    // loading(context);
+    Future.delayed(Duration(seconds: 2), () {
+    });
+    get_blogdetails(context);
+    // isNumeric("8076799976");
+  }
+
+  get_blogdetails(BuildContext context) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      blodid = prefs.getString("BlogId");
+      blog_details(blodid);
+    });
+    print("blodid $blodid");
+  }
+
   @override
   Widget build(BuildContext context) {
    return SingleChildScrollView(
-     child: Column(
+     child: blogdetail!=null?Column(
        children: [
          Padding(
            padding: const EdgeInsets.all(10.0),
@@ -22,7 +48,7 @@ class _details extends State<news_details> {
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(10),
                    image: DecorationImage(
-                     image: AssetImage("assets/newsdetail.png"),
+                     image: NetworkImage(blogdetail["Image"]),
                      fit: BoxFit.cover,
                    ),
                  ),
@@ -61,7 +87,7 @@ class _details extends State<news_details> {
                    SizedBox(
                      width: 5,
                    ),
-                   Text("3 Sept 2020",
+                   Text("${blogdetail["BlogDate"]}",
                      style: TextStyle(
                        color: Colors.white70,
                        fontFamily: 'lato',
@@ -105,7 +131,7 @@ class _details extends State<news_details> {
                Padding(
                  padding: const EdgeInsets.all(10.0),
                  child: Text(
-                   "What is the future of cryptocurrencies?",
+                   "${blogdetail["Heading"]}",
                    textAlign: TextAlign.center,
                    style: TextStyle(
                      fontSize: 21,
@@ -115,20 +141,51 @@ class _details extends State<news_details> {
                    ),
                  ),
                ),
-               Padding(
-                 padding: const EdgeInsets.all(10.0),
-                 child: Text(
-                   "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+         Padding(
+           padding: const EdgeInsets.symmetric(vertical: 0.0,horizontal: 10),
+           child: SizedBox(
+             width: MediaQuery.of(context).size.width,
+             child:  Html(data:"${blogdetail["Description"]}",
+               style: {
+                 "body": Style(
+                   fontSize: FontSize(16.0),
                    textAlign: TextAlign.justify,
-                   style: TextStyle(
-                     fontSize: 16,
-                     color: Colors.white,
-                     fontFamily: 'lato',
-                   ),
+                   // fontWeight: FontWeight.bold,
+                   color: Colors.white,
                  ),
-               ),
+               },
+             ),
+           ),
+         ),
        ],
-     ),
+     ):Center(child: CircularProgressIndicator(color: Colors.red,),),
    );
+  }
+
+
+
+  Future<void> blog_details(String blogId) async {
+    String postUrl = "https://fintracon.in/mobile-authenticate/blog-detail.php";
+    print("stringrequest");
+    var request = new http.MultipartRequest(
+        "POST", Uri.parse(postUrl));
+    request.fields['blogId'] = blogId;
+    request.send().then((response) {
+      http.Response.fromStream(response).then((onValue) {
+        if(response.statusCode ==200) {
+          try {
+           Map resposemap   = json.decode(onValue.body);
+           setState(() {
+             blogdetail = resposemap["commandResult"]["data"]["BlogDetail"];
+           });
+          } catch (e) {
+            print("response$e");
+          }
+        }
+        else{
+
+        }
+      });
+    });
   }
 }
