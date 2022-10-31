@@ -6,6 +6,7 @@ import 'package:frig/provider_list/profile_provider.dart';
 import 'package:provider/provider.dart';
 import 'arc.dart';
 import 'edit_profile.dart';
+import 'package:share_plus/share_plus.dart';
 
 class profile extends StatefulWidget{
   @override
@@ -22,7 +23,7 @@ class _profile extends State<profile> {
   void initState() {
     super.initState();
     // loading(context);
-    Future.delayed(Duration(seconds: 2), () {});
+    Future.delayed(const Duration(seconds: 2), () {});
     get_blogdetails(context);
     // isNumeric("8076799976");
   }
@@ -72,9 +73,9 @@ class _profile extends State<profile> {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               centerTitle: true,
-              backgroundColor: Color(0xffEC1C24),
+              backgroundColor: const Color(0xffEC1C24),
               elevation: 0,
-              title: Text.rich(
+              title: const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(text: "My Profile",
@@ -98,8 +99,8 @@ class _profile extends State<profile> {
                 child: Consumer<profile_provider>(
                   builder: (context,value,child){
                     return  value.map.length ==0 && !value.error
-                        ? CircularProgressIndicator(color: Colors.red,)
-                        : value.error ? Text("Opps SOmething went wrong"):Column(
+                        ? const CircularProgressIndicator(color: Colors.red,)
+                        : value.error ? const Text("Opps SOmething went wrong"):Column(
                       children: [
                         Stack(
                           children: [
@@ -108,7 +109,7 @@ class _profile extends State<profile> {
                                   .of(context)
                                   .size
                                   .height * .15,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 // gradient: LinearGradient(
                                 //     colors: [
                                 //       // const Color(0xFF000000),
@@ -159,17 +160,17 @@ class _profile extends State<profile> {
                                               child: ArcText(
                                                 radius: 80,
                                                 text: '                 Joined ${value.map["commandResult"]["data"]["Date"]}',
-                                                textStyle: TextStyle(fontSize: 18,
+                                                textStyle: const TextStyle(fontSize: 18,
                                                     color: Colors.white),
                                                 startAngle: -pi / 2,
                                               ),
                                             ),
                                             InkWell(
                                               child: CircleAvatar(
-                                                  backgroundColor: Color(0xffffffff),
+                                                  backgroundColor: const Color(0xffffffff),
                                                   radius: 70.0,
                                                   child: CircleAvatar(
-                                                    backgroundColor: Color(
+                                                    backgroundColor: const Color(
                                                         0xff000000),
                                                     radius: 68.0,
                                                     child: CircleAvatar(
@@ -177,7 +178,7 @@ class _profile extends State<profile> {
                                                             .network(
                                                           '${value.map["commandResult"]["data"]["Image"]}',
                                                           fit: BoxFit.cover,)
-                                                            .image:Image.asset('assets/demop.png',color: Color(0xffECAE0F),fit: BoxFit.cover,).image, radius: 49),
+                                                            .image:Image.asset('assets/demop.png',color: const Color(0xffECAE0F),fit: BoxFit.cover,).image, radius: 49),
                                                   )
                                               ),
                                             ),
@@ -206,7 +207,7 @@ class _profile extends State<profile> {
                                                             builder: (context) =>
                                                                 edit_profile()));
                                                   },
-                                                  icon: Icon(
+                                                  icon: const Icon(
                                                     Icons.edit,
                                                     color: Colors.white,
                                                     size: 25,
@@ -218,21 +219,21 @@ class _profile extends State<profile> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 15,
                                   ),
                                   Text("${value.map["commandResult"]["data"]["Name"]}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
                                         fontFamily: 'lato',
                                         fontWeight: FontWeight.bold
                                     ),),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 6,
                                   ),
                                   Text("${value.map["commandResult"]["data"]["Mobile"]}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
                                       fontFamily: 'lato',
@@ -260,16 +261,16 @@ class _profile extends State<profile> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Image.asset("assets/wallet1.png", width: 30,
                                       height: 20,
                                       fit: BoxFit.cover,),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
-                                    Center(
+                                    const Center(
                                       child: Text("Wallet", style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 10,
@@ -291,16 +292,16 @@ class _profile extends State<profile> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Image.asset("assets/rupeebg.png", width: 30,
                                       height: 20,
                                       fit: BoxFit.cover,),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
-                                    Center(
+                                    const Center(
                                       child: Text("Coins", style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 10,
@@ -322,16 +323,16 @@ class _profile extends State<profile> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Image.asset("assets/add1.png", width: 35,
                                       height: 30,
                                       fit: BoxFit.cover,),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
-                                    Center(
+                                    const Center(
                                       child: Text("Add money", style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 10,
@@ -358,7 +359,7 @@ class _profile extends State<profile> {
                                       height: 40,
                                       fit: BoxFit.cover,),
 
-                                    Text("Profile", style: TextStyle(
+                                    const Text("Profile", style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold
@@ -384,7 +385,7 @@ class _profile extends State<profile> {
                               child: ListView.builder(
                                 itemCount: 5,
                                 scrollDirection: Axis.vertical,
-                                physics: ScrollPhysics(),
+                                physics: const ScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, position) {
                                   return Padding(
@@ -396,7 +397,7 @@ class _profile extends State<profile> {
                                           .width,
                                       height: 60,
                                       decoration: BoxDecoration(
-                                          color: Color(0xffffffff).withOpacity(0.1),
+                                          color: const Color(0xffffffff).withOpacity(0.1),
                                           borderRadius: BorderRadius.circular(10)
                                       ),
                                       child: Padding(
@@ -405,7 +406,7 @@ class _profile extends State<profile> {
                                           mainAxisAlignment: MainAxisAlignment
                                               .spaceBetween,
                                           children: [
-                                            Text("₹ 500", style: TextStyle(
+                                            const Text("₹ 500", style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'lato',
@@ -417,7 +418,7 @@ class _profile extends State<profile> {
                                                   "assets/check.gif", width: 70,
                                                   height: 70,
                                                   fit: BoxFit.cover,),
-                                                Text("Debit", style: TextStyle(
+                                                const Text("Debit", style: TextStyle(
                                                   color: Colors.white,
                                                   fontFamily: 'lato',
                                                   fontWeight: FontWeight.bold,
@@ -439,12 +440,12 @@ class _profile extends State<profile> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 14.0),
                           child: Card(
-                            color: Color(0xff1c5180).withOpacity(0.1),
+                            color: const Color(0xff1c5180).withOpacity(0.1),
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.black, width: 1),
+                              side: const BorderSide(color: Colors.black, width: 1),
                               borderRadius: BorderRadius.circular(2),
                             ),
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 0),
                             child: Container(
                               //height: MediaQuery.of(context).size.height,
@@ -462,7 +463,7 @@ class _profile extends State<profile> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment
                                               .center,
-                                          children: [
+                                          children: const [
                                             Icon(Icons.support, color: Colors.white,
                                               size: 25,),
                                             SizedBox(width: 4,),
@@ -474,9 +475,9 @@ class _profile extends State<profile> {
                                             ),)
                                           ],
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
 
-                                        Icon(Icons.arrow_forward_ios_rounded,
+                                        const Icon(Icons.arrow_forward_ios_rounded,
                                           color: Colors.white, size: 20,)
                                       ],
                                     ),
@@ -490,7 +491,7 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 
@@ -503,7 +504,7 @@ class _profile extends State<profile> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment
                                               .center,
-                                          children: [
+                                          children:  const [
                                             Icon(Icons.miscellaneous_services,
                                               color: Colors.white, size: 25,),
                                             SizedBox(width: 4,),
@@ -515,9 +516,9 @@ class _profile extends State<profile> {
                                             ),)
                                           ],
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
 
-                                        Icon(Icons.arrow_forward_ios_rounded,
+                                        const Icon(Icons.arrow_forward_ios_rounded,
                                           color: Colors.white, size: 20,)
                                       ],
                                     ),
@@ -531,7 +532,7 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 
@@ -544,7 +545,7 @@ class _profile extends State<profile> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment
                                               .center,
-                                          children: [
+                                          children: const [
                                             Icon(Icons.settings, color: Colors.white,
                                               size: 25,),
                                             SizedBox(width: 4,),
@@ -556,9 +557,9 @@ class _profile extends State<profile> {
                                             ),)
                                           ],
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
 
-                                        Icon(Icons.arrow_forward_ios_rounded,
+                                        const Icon(Icons.arrow_forward_ios_rounded,
                                           color: Colors.white, size: 20,)
                                       ],
                                     ),
@@ -572,11 +573,11 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 
-                                  Padding(
+                                  /* Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 15.0, horizontal: 15),
                                     child: InkWell(
@@ -624,16 +625,21 @@ class _profile extends State<profile> {
                                       height: 2,
                                       color: Color(0xff524f4f),
                                     ),
-                                  ),
+                                  ), */
 
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 15.0, horizontal: 15),
                                     child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context) => login()));
+                                      onTap: () async {
+                                        final app_link = "https://play.google.com/store/apps/details?id=com.fintracon.fintracon";
+
+                                        await Share.share("Share others to choose BEST \n \n $app_link");
                                       },
+                                      // onTap: () {
+                                      //   Navigator.push(context, MaterialPageRoute(
+                                      //       builder: (context) => login()));
+                                      // },
                                       child: Row(
                                         children: [
                                           Row(
@@ -641,7 +647,7 @@ class _profile extends State<profile> {
                                                 .start,
                                             crossAxisAlignment: CrossAxisAlignment
                                                 .center,
-                                            children: [
+                                            children: const [
                                               Icon(Icons.share, color: Colors.white,
                                                 size: 25,),
                                               SizedBox(width: 4,),
@@ -654,9 +660,9 @@ class _profile extends State<profile> {
                                             ],
                                           ),
 
-                                          Spacer(),
+                                          const Spacer(),
 
-                                          Icon(Icons.arrow_forward_ios_rounded,
+                                          const Icon(Icons.arrow_forward_ios_rounded,
                                             color: Colors.white, size: 20,)
                                         ],
                                       ),
@@ -671,7 +677,7 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 
@@ -690,7 +696,7 @@ class _profile extends State<profile> {
                                                 .start,
                                             crossAxisAlignment: CrossAxisAlignment
                                                 .center,
-                                            children: [
+                                            children: const [
                                               Icon(Icons.lock, color: Colors.white,
                                                 size: 25,),
                                               SizedBox(width: 4,),
@@ -703,9 +709,9 @@ class _profile extends State<profile> {
                                             ],
                                           ),
 
-                                          Spacer(),
+                                          const Spacer(),
 
-                                          Icon(Icons.arrow_forward_ios_rounded,
+                                          const Icon(Icons.arrow_forward_ios_rounded,
                                             color: Colors.white, size: 20,)
                                         ],
                                       ),
@@ -720,7 +726,7 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 
@@ -739,7 +745,7 @@ class _profile extends State<profile> {
                                                 .start,
                                             crossAxisAlignment: CrossAxisAlignment
                                                 .center,
-                                            children: [
+                                            children: const [
                                               Icon(
                                                 Icons.menu_book, color: Colors.white,
                                                 size: 25,),
@@ -753,9 +759,9 @@ class _profile extends State<profile> {
                                             ],
                                           ),
 
-                                          Spacer(),
+                                          const Spacer(),
 
-                                          Icon(Icons.arrow_forward_ios_rounded,
+                                          const Icon(Icons.arrow_forward_ios_rounded,
                                             color: Colors.white, size: 20,)
                                         ],
                                       ),
@@ -770,7 +776,7 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 
@@ -789,7 +795,7 @@ class _profile extends State<profile> {
                                                 .start,
                                             crossAxisAlignment: CrossAxisAlignment
                                                 .center,
-                                            children: [
+                                            children: const [
                                               Icon(Icons.login, color: Colors.white,
                                                 size: 25,),
                                               SizedBox(width: 4,),
@@ -802,9 +808,9 @@ class _profile extends State<profile> {
                                             ],
                                           ),
 
-                                          Spacer(),
+                                          const Spacer(),
 
-                                          Icon(Icons.arrow_forward_ios_rounded,
+                                          const Icon(Icons.arrow_forward_ios_rounded,
                                             color: Colors.white, size: 20,)
                                         ],
                                       ),
@@ -819,7 +825,7 @@ class _profile extends State<profile> {
                                           .size
                                           .width,
                                       height: 2,
-                                      color: Color(0xff524f4f),
+                                      color: const Color(0xff524f4f),
                                     ),
                                   ),
 

@@ -1,8 +1,9 @@
 import 'dart:convert';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:animated_widgets/widgets/rotation_animated.dart';
 import 'package:animated_widgets/widgets/shake_animated_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
@@ -28,6 +29,26 @@ class _page_home extends State<page_home>{
 
   String myStringWithLinebreaks = "Lower prices.\nGreat value.";
   int price = 250;
+
+  var name_user;
+
+
+  void initState() {
+    super.initState();
+    // loading(context);
+    Future.delayed(Duration(seconds: 2), () {});
+    get_blogdetails(context);
+    // isNumeric("8076799976");
+  }
+
+  get_blogdetails(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name_user = prefs.getString("name_user")!;
+    });
+    print("blodid $name_user");
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +130,7 @@ class _page_home extends State<page_home>{
                 padding:  EdgeInsets.symmetric(horizontal: 55.0,vertical: 50),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Hey There ! \n Sudeep Sharma",style: TextStyle(
+                  child: Text("Hey There ! \n $name_user",style: TextStyle(
                     fontFamily: "lato",
                     fontSize: 22,
                     fontWeight: FontWeight.w400,
@@ -349,7 +370,7 @@ class _page_home extends State<page_home>{
                                                 width: 7,
                                               ),
                                               Center(
-                                                child: Text("₹ ${250*(position+1)}",
+                                                child: Text("₹ ${360*(position+1)}",
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                     color: Colors.white,
@@ -445,7 +466,8 @@ class _page_home extends State<page_home>{
                                                           child:
                                                           InkWell(
                                                             onTap: (){
-
+                                                              launch("https://paytm.me/Sl-vqM9");
+                                                             // launch("https://paytm.business/link/onlinePayment?linkName=FINTRACON&linkId=LL_546451982");
                                                             //  Navigator.push(context, MaterialPageRoute(builder: (context) => home_activity()));
 
                                                             },

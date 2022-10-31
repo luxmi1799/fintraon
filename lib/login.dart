@@ -201,7 +201,7 @@ class _login_body extends State<_login> {
                           print('Country changed to: ' + country.name);
                         },
                       ),
-                    ):otp_enter(context),
+                    ):null,
                   ),
 
                   Offstage(
@@ -422,7 +422,7 @@ class _login_body extends State<_login> {
                                 height: 50,
                                 child: RaisedButton(
                                   onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => create_account()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => sign_up()));
                                     // Navigator.pushNamed(context, Myroutes.practical_home);
                                   },
                                   child: Text(
@@ -490,67 +490,6 @@ class _login_body extends State<_login> {
       });
     });
   }
-
-  Widget otp_enter(BuildContext context){
-    return Padding(
-      padding: const EdgeInsets.only(left: 10.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            children: [
-              Text("please enter the OTP send to 9976547899",style: TextStyle(
-                fontSize: 13,
-                fontFamily: 'lato',
-                color: Colors.grey,
-              ),),
-              Icon(Icons.edit),
-            ],
-          ),
-
-          SizedBox(
-            height: 5,
-          ),
-          TextFormField(
-            // controller: emailController,
-            decoration: InputDecoration(
-              hintText: "OTP",
-              // labelText: "OTP",
-              labelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize:20,
-                fontFamily: 'lato',
-                color: Colors.grey,
-              ),
-              //prefixIcon: new Icon(Icons.email),
-            ),
-            validator: (text){
-              return null;
-            },
-          ),
-
-          SizedBox(
-            height: 5,
-          ),
-
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text("resend OTP in 00:60",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 14,
-                fontFamily: 'lato',
-                color: Colors.grey,
-              ),),
-          ),
-
-        ],
-      ),
-    );
-  }
   userdata(String UserId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String postUrl = "https://fintracon.in/mobile-authenticate/userById.php";
@@ -579,4 +518,5 @@ class _login_body extends State<_login> {
       });
     });
   }
+
 }

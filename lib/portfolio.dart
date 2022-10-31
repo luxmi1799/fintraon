@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frig/home_activity.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:dot_pagination_swiper/dot_pagination_swiper.dart';
 
 List<String> imgList = [
@@ -20,6 +21,7 @@ class portfolio extends StatefulWidget{
 class _package extends State<portfolio> {
   String myStringWithLinebreaks = "Line 1\nLine 2";
   int price = 500;
+  int addprice = 250;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -126,7 +128,7 @@ class _package extends State<portfolio> {
                     width: MediaQuery.of(context).size.width,
                     height: 320,
                     child: ListView.builder(
-                      itemCount: 1,
+                      itemCount: 3,
                       scrollDirection: Axis.horizontal,
                       physics: ScrollPhysics(),
                       shrinkWrap: true,
@@ -136,7 +138,7 @@ class _package extends State<portfolio> {
                           child: Card(
                             color: Colors.white.withOpacity(0.0001),
                             child: Container(
-                              width: MediaQuery.of(context).size.width*0.75,
+                              width: MediaQuery.of(context).size.width*0.7,
                               decoration: BoxDecoration(
                                 image:  new DecorationImage(
                                   image: ExactAssetImage('assets/red.png'),
@@ -170,7 +172,7 @@ class _package extends State<portfolio> {
                                             width: 7,
                                           ),
                                           Center(
-                                            child: Text("₹ ${price*(position+1)}",
+                                            child: Text("₹ ${price+(addprice*position)}",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                               color: Colors.white,
@@ -188,7 +190,7 @@ class _package extends State<portfolio> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text(" For ${position+1} day",style: TextStyle(
+                                          Text(" For ${position+2} day",style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20,
@@ -266,8 +268,16 @@ class _package extends State<portfolio> {
                                                       child:
                                                       InkWell(
                                                         onTap: (){
-
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context) => home_activity()));
+                                                          if(position == 0){
+                                                            launch("https://paytm.me/BgvN-yF");
+                                                          }
+                                                          else if(position == 1){
+                                                            launch("https://paytm.me/KCE6-yz");
+                                                          }
+                                                          else if(position == 2){
+                                                            launch("https://paytm.me/u-qzNyF");
+                                                          }
+                                                          //Navigator.push(context, MaterialPageRoute(builder: (context) => home_activity()));
 
                                                         },
                                                         child: Center(

@@ -77,8 +77,10 @@ dev_dependencies:
   simple_animations: ^4.2.0
   wave: ^0.2.2
   rename: ^2.0.1
+  url_launcher: ^6.1.6
   provider: ^6.0.3
   flutter_html: ^3.0.0-alpha.3
+  share_plus: ^6.1.0
   image_picker: ^0.8.6
 
 # For information on the generic Dart part of this file, see the
