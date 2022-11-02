@@ -86,7 +86,7 @@ class _login_body extends State<_login> {
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
                       child: Center(
-                        child: Text("Register",
+                        child: Text("Create Account",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

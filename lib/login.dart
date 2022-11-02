@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:frig/sign_up.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'create_account.dart';
+import 'loading_bar.dart';
 import 'otp_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -255,6 +256,7 @@ class _login_body extends State<_login> {
                         ),
                         child: FlatButton(
                           onPressed: (){
+                            circle(context);
                             send_mobile_otp(_phoneController.text);
                           //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
                           },
@@ -350,7 +352,6 @@ class _login_body extends State<_login> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
           }
           else{
-
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -375,9 +376,9 @@ class _login_body extends State<_login> {
                                   color: Colors.white,
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
-                                  backgroundColor:  Color(0xffECAE0F),
+                                  backgroundColor:  Color(0xffEC1C24),
                                 ),),
-                              color: Color(0xffECAE0F),
+                              color: Color(0xffEC1C24),
                             ),
                           ),
                           SizedBox(
@@ -426,7 +427,7 @@ class _login_body extends State<_login> {
                                     // Navigator.pushNamed(context, Myroutes.practical_home);
                                   },
                                   child: Text(
-                                    "Register",
+                                    "Create Account",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,

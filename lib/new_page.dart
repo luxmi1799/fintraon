@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frig/loading_bar.dart';
 import 'package:frig/news_details.dart';
+import 'package:frig/provider_list/profile_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:frig/provider_list/blogs_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,13 +15,15 @@ class news extends StatefulWidget{
 
 class _news extends State<news> {
   bool detail = false;
-
+  var PaymentStatus;
+  var user_id;
   var _controller = ScrollController();
   ScrollPhysics _physics = ClampingScrollPhysics();
 
   @override
   void initState() {
     super.initState();
+    get_blogdetails(context);
     context.read<blog_provider>().blog_p_list();
     _controller.addListener(() {
       if (_controller.position.pixels <= 56)
@@ -29,9 +32,25 @@ class _news extends State<news> {
         setState(() => _physics = BouncingScrollPhysics());
     });
   }
+
+  get_blogdetails(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      PaymentStatus = prefs.getString("PaymentStatus");
+      user_id = prefs.getString("user_id");
+      context.read<profile_provider>().profile_detail(user_id);
+    });
+    print("PaymentStatus $PaymentStatus");
+  }
+
+  final Shader linearGradient = LinearGradient(
+    colors: <Color>[Color(0xff12c2e9), Color(0xffc471ed) , Color(0xfff64f59)],
+  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+
   @override
   Widget build(BuildContext context) {
     context.read<blog_provider>().blog_p_list();
+    context.read<profile_provider>().profile_detail(user_id);
      return Scaffold(
          backgroundColor: Colors.black,
          appBar: AppBar(
@@ -73,14 +92,44 @@ class _news extends State<news> {
              padding: EdgeInsets.all(8.0),
              child: SingleChildScrollView(
                physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-               child: Column(
+               child: RefreshIndicator(
+                 onRefresh: () async {
+                   context.read<profile_provider>().profile_detail(user_id);
+                 }, child: Consumer<profile_provider>(
+                  builder: (context,value,child) {
+                    return value.map.length == 0 && !value.error
+                        ? const CircularProgressIndicator(color: Colors.red,)
+                        : value.error
+                        ? const Text("Opps SOmething went wrong")
+                        : value.map["commandResult"]["data"]["PaymentStatus"]=="0"?Center(child: Container(
+                      child: Text(" This page is Locked Please Registration Fees First",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(  fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                          foreground: Paint()..shader = linearGradient),),
+                    ),):Column(
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        detail == false?editorial(context):news_details(),
+                      ],
+                    );
+                  }
+                ),
+               ),
+               /*child: PaymentStatus=="0"?Center(child: Container(
+                 child: Text("  This page is Locked Please Registration Fees First",style: TextStyle(  fontSize: 30.0,
+                     fontWeight: FontWeight.bold,
+                     foreground: Paint()..shader = linearGradient),),
+               ),):Column(
                  children: [
                    SizedBox(
                      height: 5,
                    ),
                     detail == false?editorial(context):news_details(),
                  ],
-               ),
+               ),*/
              ),
            )
        );

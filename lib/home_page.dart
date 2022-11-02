@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +9,14 @@ import 'package:frig/my_profile.dart';
 import 'package:frig/new_home_page.dart';
 import 'package:frig/new_page.dart';
 import 'package:frig/portfolio.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frig/wallet.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
+
+import 'Notificationservice/local_notification_service.dart';
 
 
 class home_page extends StatefulWidget{
@@ -23,6 +29,9 @@ class home_page extends StatefulWidget{
 class _home_page extends State<home_page> with TickerProviderStateMixin{
   late TabController _tabController;
   int _currentIndex = 0;
+  var user_id;
+  var PaymentStatus;
+  String deviceTokenToSendPushNotification = "";
 
   List<Widget> tabs = [
     //home_activity(),
@@ -33,17 +42,103 @@ class _home_page extends State<home_page> with TickerProviderStateMixin{
     //wallet(),
   ];
 
-
+  userdata(String UserId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String postUrl = "https://fintracon.in/mobile-authenticate/userById.php";
+    print("stringrequest");
+    var request = new http.MultipartRequest(
+        "POST", Uri.parse(postUrl));
+    request.fields['UserId'] = UserId;
+    request.send().then((response) {
+      http.Response.fromStream(response).then((onValue) {
+        try {
+          print("onValue1${onValue.body}");
+          Map mapRes = json.decode(onValue.body);
+          setState(() {
+            PaymentStatus = mapRes["commandResult"]["data"]["PaymentStatus"];
+            var namedetail= mapRes["commandResult"]["data"]["Name"];
+            prefs.setString("nameuser","$namedetail");
+            prefs.setString("PaymentStatus",PaymentStatus);
+            this.userdata(user_id);
+          });
+        } catch (e) {
+          print("response$e");
+        }
+      });
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    get_blogdetails(context);
     _tabController = TabController(
       initialIndex: 1,
       length: 5,
       vsync: this,
     );
+    // 1. This method call when app in terminated state and you get a notification
+    // when you click on notification app open from terminated state and you can get notification data in this method
+
+    FirebaseMessaging.instance.getInitialMessage().then(
+          (message) {
+        print("FirebaseMessaging.instance.getInitialMessage");
+        if (message != null) {
+          print("New Notification");
+          if (message.data['_id'] != null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => profile(
+                 // id: message.data['_id'],
+                ),
+              ),
+            );
+          }
+        }
+      },
+    );
+    // 2. This method only call when App in forground it mean app must be opened
+    FirebaseMessaging.onMessage.listen(
+          (message) {
+        print("FirebaseMessaging.onMessage.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data11 ${message.data}");
+          LocalNotificationService.createanddisplaynotification(message);
+
+        }
+      },
+    );
+    // 3. This method only call when App in background and not terminated(not closed)
+    FirebaseMessaging.onMessageOpenedApp.listen(
+          (message) {
+        print("FirebaseMessaging.onMessageOpenedApp.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data22 ${message.data['_id']}");
+        }
+      },
+    );
   }
+
+  Future<void> getDeviceTokenToSendNotification() async {
+    final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+    final token = await _fcm.getToken();
+    deviceTokenToSendPushNotification = token.toString();
+    print("Token Value $deviceTokenToSendPushNotification");
+  }
+
+  get_blogdetails(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      user_id = prefs.getString("user_id");
+     this.userdata(user_id);
+    });
+    print("blodid $user_id");
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -51,6 +146,7 @@ class _home_page extends State<home_page> with TickerProviderStateMixin{
   }
   @override
   Widget build(BuildContext context) {
+    getDeviceTokenToSendNotification();
      return Scaffold(
        backgroundColor: Colors.black,
          appBar: PreferredSize(
@@ -91,8 +187,27 @@ class _home_page extends State<home_page> with TickerProviderStateMixin{
          backgroundColor:Colors.black ,
          items: <Widget>[
            Icon(Icons.home_filled,color: Colors.white,),
-           Icon(Icons.newspaper,color: Colors.white,),
-           Icon(Icons.monetization_on_rounded,color: Colors.white,),
+           PaymentStatus == "0"?Stack(
+             children: [
+               Icon(Icons.newspaper, color: Colors.black,),
+               Positioned(
+                   top: -1,
+                   right: -4,
+                   child: Icon(Icons.lock, color: Colors.white,size: 17,)),
+             ],
+           ):Icon(Icons.newspaper, color: Colors.white,),
+           // Icon(
+           //   PaymentStatus == "0"?Icons.lock:Icons.newspaper,
+           //   color: Colors.white,),
+           PaymentStatus == "0"?Stack(
+             children: [
+               Icon(Icons.monetization_on_rounded, color: Colors.black,),
+               Positioned(
+                   top: -1,
+                   right: -4,
+                   child: Icon(Icons.lock, color: Colors.white,size: 17,)),
+             ],
+           ):Icon(Icons.monetization_on_rounded,color: Colors.white,),
            Icon(Icons.manage_accounts,color: Colors.white,),
            //Icon(Icons.account_balance_wallet,color: Colors.white,),
          ],
@@ -103,21 +218,6 @@ class _home_page extends State<home_page> with TickerProviderStateMixin{
            });
          },
        ),
-       // body: TabBarView(
-       //   physics: NeverScrollableScrollPhysics(), // swipe navigation handling is not supported
-       //   controller: _tabController,
-       //   // ignore: prefer_const_literals_to_create_immutables
-       //   children: <Widget>[
-       //     page_home(),
-       //     //new_home(),
-       //     //home_activity(),
-       //     news(),
-       //     portfolio(),
-       //     profile(),
-       //     wallet(),
-       //   ],
-       // ),
-       //bottomNavigationBar: _buildBlurEffect(),
        body:tabs[_currentIndex],
      );
   }

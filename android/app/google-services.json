@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1042923921808",
+    "project_id": "fintracon-f3052",
+    "storage_bucket": "fintracon-f3052.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042923921808:android:c9fc98bc3fc384943fd315",
+        "android_client_info": {
+          "package_name": "com.fintracon.fintracon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042923921808-2uimcp59oko47do3ecfqnr0h50r41a3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPhohEozSRQj5UU91SRVQNFP2Gi3vKK9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042923921808-2uimcp59oko47do3ecfqnr0h50r41a3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

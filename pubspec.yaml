@@ -82,6 +82,10 @@ dev_dependencies:
   flutter_html: ^3.0.0-alpha.3
   share_plus: ^6.1.0
   image_picker: ^0.8.6
+  gradient_borders: ^0.2.0
+  firebase_core: ^2.1.1
+  firebase_messaging: ^14.0.3
+  flutter_local_notifications: ^12.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -137,7 +141,7 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logo.png"
+  image_path: "assets/_logo.png"
 
 flutter_app_name:
   name: "Fintracon"

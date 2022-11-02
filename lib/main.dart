@@ -5,10 +5,22 @@ import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:frig/provider_list/blogs_provider.dart';
 import 'package:frig/provider_list/profile_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'Notificationservice/local_notification_service.dart';
 import 'intro.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
-void main() {
+
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print(message.data.toString());
+  print(message.notification!.title);
+}
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  LocalNotificationService.initialize();
   runApp(MyApp());
 }
 

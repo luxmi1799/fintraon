@@ -1,9 +1,15 @@
 import 'dart:math';
+import 'package:frig/privacy_policy.dart';
+import 'package:frig/service%20_page.dart';
+import 'package:frig/support.dart';
+import 'package:frig/support_page.dart';
+import 'package:frig/terms_condition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:frig/login.dart';
 import 'package:frig/provider_list/profile_provider.dart';
 import 'package:provider/provider.dart';
+import 'about_us.dart';
 import 'arc.dart';
 import 'edit_profile.dart';
 import 'package:share_plus/share_plus.dart';
@@ -457,29 +463,35 @@ class _profile extends State<profile> {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 15.0, horizontal: 15),
-                                    child: Row(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment
-                                              .center,
-                                          children: const [
-                                            Icon(Icons.support, color: Colors.white,
-                                              size: 25,),
-                                            SizedBox(width: 4,),
-                                            Text("Support", style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13,
-                                              fontFamily: 'lato',
-                                              fontWeight: FontWeight.bold,
-                                            ),)
-                                          ],
-                                        ),
-                                        const Spacer(),
+                                    child: InkWell(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => support_s()));
+                                        //Navigator.push(context, MaterialPageRoute(builder: (context) => support_page()));
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .center,
+                                            children: const [
+                                              Icon(Icons.support, color: Colors.white,
+                                                size: 25,),
+                                              SizedBox(width: 4,),
+                                              Text("Support", style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                                fontFamily: 'lato',
+                                                fontWeight: FontWeight.bold,
+                                              ),)
+                                            ],
+                                          ),
+                                          const Spacer(),
 
-                                        const Icon(Icons.arrow_forward_ios_rounded,
-                                          color: Colors.white, size: 20,)
-                                      ],
+                                          const Icon(Icons.arrow_forward_ios_rounded,
+                                            color: Colors.white, size: 20,)
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Padding(
@@ -498,29 +510,34 @@ class _profile extends State<profile> {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 15.0, horizontal: 15),
-                                    child: Row(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment
-                                              .center,
-                                          children:  const [
-                                            Icon(Icons.miscellaneous_services,
-                                              color: Colors.white, size: 25,),
-                                            SizedBox(width: 4,),
-                                            Text("Services", style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'lato',
-                                            ),)
-                                          ],
-                                        ),
-                                        const Spacer(),
+                                    child: InkWell(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => service_page()));
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .center,
+                                            children:  const [
+                                              Icon(Icons.miscellaneous_services,
+                                                color: Colors.white, size: 25,),
+                                              SizedBox(width: 4,),
+                                              Text("Services", style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'lato',
+                                              ),)
+                                            ],
+                                          ),
+                                          const Spacer(),
 
-                                        const Icon(Icons.arrow_forward_ios_rounded,
-                                          color: Colors.white, size: 20,)
-                                      ],
+                                          const Icon(Icons.arrow_forward_ios_rounded,
+                                            color: Colors.white, size: 20,)
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Padding(
@@ -686,8 +703,7 @@ class _profile extends State<profile> {
                                         vertical: 15.0, horizontal: 15),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context) => login()));
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=> privacy_page()));
                                       },
                                       child: Row(
                                         children: [
@@ -717,6 +733,7 @@ class _profile extends State<profile> {
                                       ),
                                     ),
                                   ),
+
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0, vertical: 0),
@@ -729,14 +746,12 @@ class _profile extends State<profile> {
                                       color: const Color(0xff524f4f),
                                     ),
                                   ),
-
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 15.0, horizontal: 15),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context) => login()));
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => terms_detail_page()));
                                       },
                                       child: Row(
                                         children: [
@@ -767,6 +782,57 @@ class _profile extends State<profile> {
                                       ),
                                     ),
                                   ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0, vertical: 0),
+                                    child: Container(
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      height: 2,
+                                      color: const Color(0xff524f4f),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15.0, horizontal: 15),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => about_us_page()));
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment
+                                                .start,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .center,
+                                            children: const [
+                                              Icon(
+                                                Icons.info, color: Colors.white,
+                                                size: 25,),
+                                              SizedBox(width: 4,),
+                                              Text("About Us", style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'lato',
+                                              ),)
+                                            ],
+                                          ),
+
+                                          const Spacer(),
+
+                                          const Icon(Icons.arrow_forward_ios_rounded,
+                                            color: Colors.white, size: 20,)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12.0, vertical: 0),
