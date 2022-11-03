@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:animated_widgets/widgets/rotation_animated.dart';
 import 'package:animated_widgets/widgets/shake_animated_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:frig/home_activity.dart';
+import 'package:frig/daily_shares_page.dart';
+import 'package:frig/provider_list/daily-shares_provider.dart';
 import 'package:frig/provider_list/profile_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -58,6 +59,8 @@ class _package extends State<portfolio> {
   @override
   Widget build(BuildContext context) {
     context.read<profile_provider>().profile_detail(user_id);
+    context.read<daily_shares_provider>().daily_shares_list();
+
     return Stack(
       children: [
         Container(
@@ -109,9 +112,10 @@ class _package extends State<portfolio> {
           child: RefreshIndicator(
             onRefresh: () async {
               context.read<profile_provider>().profile_detail(user_id);
-            }, child: Consumer<profile_provider>(
-              builder: (context,value,child) {
-                return value.map.length == 0 && !value.error
+              context.read<daily_shares_provider>().daily_shares_list();
+            }, child: Consumer2<profile_provider,daily_shares_provider>(
+              builder: (context,value,value2,child) {
+                return value.map.length == 0 && !value.error ||  value2.map.length == 0 && !value2.error
                     ? const CircularProgressIndicator(color: Colors.red,)
                     : value.error
                     ? const Text("Opps SOmething went wrong")
@@ -122,7 +126,7 @@ class _package extends State<portfolio> {
                       fontWeight: FontWeight.bold,
                       foreground: Paint()..shader = linearGradient),),
                 ),): Column(
-                  children: [
+                    children: [
                      int.parse(value.map["commandResult"]["data"]["WalletCoin"])>0?Column(
                        mainAxisAlignment: MainAxisAlignment.start,
                        children: [
@@ -134,8 +138,8 @@ class _package extends State<portfolio> {
                                Row(
                                  children: [
                                    ClipOval(
-                                     child: Image.asset(
-                                       'assets/home_pro.png',
+                                     child: Image.network(
+                                       value.map["commandResult"]["data"]["Image"],
                                        width: 60,
                                        height: 60,
                                        fit: BoxFit.cover,
@@ -148,7 +152,7 @@ class _package extends State<portfolio> {
                                      mainAxisAlignment: MainAxisAlignment.start,
                                      crossAxisAlignment: CrossAxisAlignment.start,
                                      children: [
-                                       Text("Hi, Sudeep!",
+                                       Text(value.map["commandResult"]["data"]["Name"]??"",
                                          style: TextStyle(
                                            color: Colors.white,
                                            fontFamily: 'lato',
@@ -263,7 +267,7 @@ class _package extends State<portfolio> {
                              child: ListView.builder(
                                controller: _controller,
                                physics: _physics,
-                               itemCount: 5,
+                               itemCount: value2.map["commandResult"]["data"]["ShareList"].length,
                                scrollDirection: Axis.vertical,
                                shrinkWrap: true,
                                itemBuilder: (context, position) {
@@ -284,7 +288,12 @@ class _package extends State<portfolio> {
                                                  SizedBox(
                                                      width:40,
                                                      height: 40,
-                                                     child: Image.asset(image[position])),
+                                                     child:  ClipOval(
+                                                         child: Image.network(value2.map["commandResult"]["data"]["ShareList"][position]["Image"],
+                                                           width: 40,
+                                                           height: 40,
+                                                           fit: BoxFit.fill,
+                                                         ))),
                                                  // SizedBox(
                                                  //     width:25,
                                                  //     height: 25,
@@ -302,19 +311,21 @@ class _package extends State<portfolio> {
                                              children: [
                                                Align(
                                                  alignment: Alignment.centerLeft,
-                                                 child: Text(title[position],style: TextStyle(
+                                                 child: Text(
+                                                     value2.map["commandResult"]["data"]["ShareList"][position]["Heading"],
+                                                     style: TextStyle(
                                                    color: Colors.white,
                                                    fontSize: 16,
                                                    fontFamily: 'lato',
                                                    fontWeight: FontWeight.bold,
                                                  )),
                                                ),
-                                               Text(" Twitter inc.",
-                                                   style: TextStyle(
-                                                     color: Colors.grey,
-                                                     fontSize: 13,
-                                                     fontFamily: 'lato',
-                                                   )),
+                                               // Text(" Twitter inc.",
+                                               //     style: TextStyle(
+                                               //       color: Colors.grey,
+                                               //       fontSize: 13,
+                                               //       fontFamily: 'lato',
+                                               //     )),
 
                                              ],
                                            ),
@@ -322,11 +333,10 @@ class _package extends State<portfolio> {
                                        ),
 
                                        InkWell(
-                                           onTap: (){
-                                             setState(() {
-                                              // details = true;
-                                             });
-                                             //Navigator.of(context).push(MaterialPageRoute(builder: (context) => edit_profile()));
+                                           onTap: () async {
+                                             SharedPreferences prefs = await SharedPreferences.getInstance();
+                                             prefs.setString("shareId", value2.map["commandResult"]["data"]["ShareList"][position]["Id"]);
+                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => share_details()));
                                            },
                                            child: Icon(Icons.remove_red_eye,color: Colors.white,))
                                      ],

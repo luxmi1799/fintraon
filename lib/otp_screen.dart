@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:frig/create_account.dart';
-import 'package:frig/home_activity.dart';
+import 'package:frig/daily_shares_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';

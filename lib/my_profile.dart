@@ -444,7 +444,56 @@ class _profile extends State<profile> {
                         ),
 
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 14.0),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 15.0, horizontal: 15),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => about_us_page()));
+                            },
+                            child: Row(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .start,
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .center,
+                                  children: const [
+                                    Icon(
+                                      Icons.info, color: Colors.white,
+                                      size: 25,),
+                                    SizedBox(width: 4,),
+                                    Text("About Us", style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'lato',
+                                    ),)
+                                  ],
+                                ),
+
+                                const Spacer(),
+
+                                const Icon(Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white, size: 20,)
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0, vertical: 0),
+                          child: Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
+                            height: 2,
+                            color: const Color(0xff524f4f),
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 0.0),
                           child: Card(
                             color: const Color(0xff1c5180).withOpacity(0.1),
                             shape: RoundedRectangleBorder(
@@ -452,7 +501,7 @@ class _profile extends State<profile> {
                               borderRadius: BorderRadius.circular(2),
                             ),
                             margin: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 0),
+                                vertical: 0.0, horizontal: 0),
                             child: Container(
                               //height: MediaQuery.of(context).size.height,
                               child: Column(
@@ -795,56 +844,8 @@ class _profile extends State<profile> {
                                       color: const Color(0xff524f4f),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15.0, horizontal: 15),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => about_us_page()));
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment
-                                                .start,
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
-                                            children: const [
-                                              Icon(
-                                                Icons.info, color: Colors.white,
-                                                size: 25,),
-                                              SizedBox(width: 4,),
-                                              Text("About Us", style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'lato',
-                                              ),)
-                                            ],
-                                          ),
-
-                                          const Spacer(),
-
-                                          const Icon(Icons.arrow_forward_ios_rounded,
-                                            color: Colors.white, size: 20,)
-                                        ],
-                                      ),
-                                    ),
-                                  ),
 
 
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0, vertical: 0),
-                                    child: Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width,
-                                      height: 2,
-                                      color: const Color(0xff524f4f),
-                                    ),
-                                  ),
 
                                   Padding(
                                     padding: const EdgeInsets.symmetric(

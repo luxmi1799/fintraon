@@ -3,7 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:frig/home_activity.dart';
+import 'package:frig/daily_shares_page.dart';
 import 'package:frig/home_page_page.dart';
 import 'package:frig/my_profile.dart';
 import 'package:frig/new_home_page.dart';

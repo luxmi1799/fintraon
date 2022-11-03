@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:frig/login.dart';
+import 'package:frig/mpin_create_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'create_account.dart';
 import 'otp_screen.dart';
@@ -260,7 +261,7 @@ class _login_body extends State<_login> {
                               send_mobile_otp(_phoneController.text);
                               //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
                             },
-                            child: Text("Send OTP",
+                            child: Text("Set MPIN",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -338,18 +339,19 @@ class _login_body extends State<_login> {
           var msg = mapRes["commandResult"]["message"];
 
           if(success == 1){
-            var otpdetail= mapRes["commandResult"]["data"]["otp"];
+            //var otpdetail= mapRes["commandResult"]["data"]["otp"];
             var user_id= mapRes["commandResult"]["data"]["user_id"];
             print("user_id$user_id");
             setState(() {
-              getdata = otpdetail;
+              //getdata = otpdetail;
               prefs.setString("new_account","new_account");
               prefs.setString("mobile_number",mobile);
-              prefs.setString("otp_found",getdata);
+              //prefs.setString("otp_found",getdata);
               prefs.setString("user_id",user_id);
             });
             userdata(user_id);
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => mpin()));
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
           }
           else{
 

@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:frig/home_activity.dart';
+import 'package:frig/daily_shares_page.dart';
 import 'package:frig/home_page.dart';
 import 'package:frig/sign_in.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +22,9 @@ class _create_account extends State<create_account> {
   bool isChecked = false;
   var getdata;
   var user_idd;
+  var password;
   String phonenum = "";
+  String deviceTokenToSendPushNotification = "";
   final emailcontroller = new TextEditingController();
   final namecontroller = new TextEditingController();
   final phonecontroller = new TextEditingController();
@@ -33,17 +36,28 @@ class _create_account extends State<create_account> {
     Future.delayed(Duration(seconds: 2), () {
     });
     get_otp(context);
+    getDeviceTokenToSendNotification();
     // isNumeric("8076799976");
   }
+
+
 
   get_otp(BuildContext context) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       //  Navigator.pop(context);
       phonenum = prefs.getString('mobile_number')!;
+      password = prefs.getString('password')!;
       phonecontroller.text = phonenum;
     });
     print("phonem$phonenum");
+  }
+
+  Future<void> getDeviceTokenToSendNotification() async {
+    final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+    final token = await _fcm.getToken();
+    deviceTokenToSendPushNotification = token.toString();
+    print("Token Value $deviceTokenToSendPushNotification");
   }
 
   @override
@@ -499,7 +513,7 @@ class _create_account extends State<create_account> {
                      ),
                      child: FlatButton(
                        onPressed: (){
-                         signup_details(emailcontroller.text, phonenum, namecontroller.text);
+                         signup_details(emailcontroller.text, phonenum, namecontroller.text,password , deviceTokenToSendPushNotification);
                         // Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));
                        },
                        child: Text("SIGN UP",
@@ -535,7 +549,7 @@ class _create_account extends State<create_account> {
     return Colors.red;
   }
 
-  signup_details(String email,String mobile , String name ) async {
+  signup_details(String email,String mobile , String name , String Password , String token ) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String postUrl = "https://fintracon.in/mobile-authenticate/update-profile.php";
     print("stringrequest");
@@ -544,6 +558,8 @@ class _create_account extends State<create_account> {
     request.fields['Email'] = email;
     request.fields['Name'] = name;
     request.fields['Mobile'] = mobile;
+    request.fields['Password'] = Password;
+    request.fields['device_token'] = token;
     request.send().then((response) {
       http.Response.fromStream(response).then((onValue) {
         try {

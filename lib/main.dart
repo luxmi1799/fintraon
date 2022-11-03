@@ -3,6 +3,7 @@ import 'package:frig/create_account.dart';
 import 'package:frig/login.dart';
 import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:frig/provider_list/blogs_provider.dart';
+import 'package:frig/provider_list/daily-shares_provider.dart';
 import 'package:frig/provider_list/profile_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<blog_provider>(create: (context)=>blog_provider()),
         ChangeNotifierProvider<profile_provider>(create: (context)=>profile_provider()),
+        ChangeNotifierProvider<daily_shares_provider>(create: (context)=>daily_shares_provider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
