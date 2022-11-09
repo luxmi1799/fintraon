@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    new Future.delayed(
+    Future.delayed(
         const Duration(milliseconds: 6000),
             () => Navigator.push(
           context,
@@ -153,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           'Fintracon',
                           style: TextStyle(

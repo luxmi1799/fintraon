@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:frig/home_page_page.dart';
 import 'package:frig/privacy_policy.dart';
 import 'package:frig/service%20_page.dart';
 import 'package:frig/support.dart';
@@ -256,34 +257,39 @@ class _profile extends State<profile> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Container(
-                                width: 70,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white.withOpacity(0.2),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Image.asset("assets/wallet1.png", width: 30,
-                                      height: 20,
-                                      fit: BoxFit.cover,),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Center(
-                                      child: Text("Wallet", style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold
-                                      ),),
-                                    )
-                                  ],
+                              InkWell(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>page_home()));
+                                },
+                                child: Container(
+                                  width: 70,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white.withOpacity(0.2),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Image.asset("assets/wallet1.png", width: 30,
+                                        height: 20,
+                                        fit: BoxFit.cover,),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      const Center(
+                                        child: Text("Wallet", style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold
+                                        ),),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
 
@@ -318,7 +324,7 @@ class _profile extends State<profile> {
                                 ),
                               ),
 
-                              Container(
+                              /* Container(
                                 width: 70,
                                 height: 60,
                                 decoration: BoxDecoration(
@@ -347,30 +353,35 @@ class _profile extends State<profile> {
                                     )
                                   ],
                                 ),
-                              ),
+                              ), */
 
-                              Container(
-                                width: 70,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white.withOpacity(0.2),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
+                              InkWell(
+                                onTap: (){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => edit_profile()));
+                                },
+                                child: Container(
+                                  width: 70,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white.withOpacity(0.2),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
 
-                                    Image.asset("assets/picon.png", width: 40,
-                                      height: 40,
-                                      fit: BoxFit.cover,),
+                                      Image.asset("assets/picon.png", width: 40,
+                                        height: 40,
+                                        fit: BoxFit.cover,),
 
-                                    const Text("Profile", style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold
-                                    ),),
-                                  ],
+                                      const Text("Profile", style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold
+                                      ),),
+                                    ],
+                                  ),
                                 ),
                               ),
 
@@ -602,96 +613,7 @@ class _profile extends State<profile> {
                                     ),
                                   ),
 
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15.0, horizontal: 15),
-                                    child: Row(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment
-                                              .center,
-                                          children: const [
-                                            Icon(Icons.settings, color: Colors.white,
-                                              size: 25,),
-                                            SizedBox(width: 4,),
-                                            Text("Setting", style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'lato',
-                                            ),)
-                                          ],
-                                        ),
-                                        const Spacer(),
 
-                                        const Icon(Icons.arrow_forward_ios_rounded,
-                                          color: Colors.white, size: 20,)
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0, vertical: 0),
-                                    child: Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width,
-                                      height: 2,
-                                      color: const Color(0xff524f4f),
-                                    ),
-                                  ),
-
-                                  /* Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15.0, horizontal: 15),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context) => login()));
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment
-                                                .start,
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
-                                            children: [
-                                              Icon(Icons.notifications,
-                                                color: Colors.white, size: 25,),
-                                              SizedBox(width: 4,),
-                                              Text("Notification Setting",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'lato',
-                                                ),)
-                                            ],
-                                          ),
-
-                                          Spacer(),
-
-                                          Icon(Icons.arrow_forward_ios_rounded,
-                                            color: Colors.white, size: 20,)
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0, vertical: 0),
-                                    child: Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width,
-                                      height: 2,
-                                      color: Color(0xff524f4f),
-                                    ),
-                                  ), */
 
                                   Padding(
                                     padding: const EdgeInsets.symmetric(

@@ -151,73 +151,76 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
 
 
 
-        Positioned(
-          left: 20,
-          right: 20,
-          bottom: 20,
-          child:Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: GestureDetector(
-              onTapUp: (_) {
-                setState(() {
-                  _position = 4;
-                });
-              },
-              onTapDown: (_) {
-                setState(() {
-                  _position = 0;
-                });
-              },
-              onTapCancel: () {
-                setState(() {
-                  _position = 4;
-                });
-              },
-              child: Container(
-                height: _height + _shadowHeight,
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        height: _height,
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        decoration: BoxDecoration(
-                          color: Color(0xffEC1C24).withOpacity(0.5),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(16),
-                          ),
-                        ),
-                      ),
-                    ),
-                    AnimatedPositioned(
-                      curve: Curves.easeIn,
-                      bottom: _position,
-                      duration: Duration(milliseconds: 70),
-                      child: Container(
-                        height: _height,
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        decoration: BoxDecoration(
-                          color: Color(0xffEC1C24),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(4),
-                          ),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'GET STARTED',
-                            style: TextStyle(
-                              decoration: TextDecoration.none,
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontFamily: 'lato',
+        Offstage(
+          offstage: true,
+          child: Positioned(
+            left: 20,
+            right: 20,
+            bottom: 20,
+            child:Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GestureDetector(
+                onTapUp: (_) {
+                  setState(() {
+                    _position = 4;
+                  });
+                },
+                onTapDown: (_) {
+                  setState(() {
+                    _position = 0;
+                  });
+                },
+                onTapCancel: () {
+                  setState(() {
+                    _position = 4;
+                  });
+                },
+                child: Container(
+                  height: _height + _shadowHeight,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          height: _height,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: Color(0xffEC1C24).withOpacity(0.5),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      AnimatedPositioned(
+                        curve: Curves.easeIn,
+                        bottom: _position,
+                        duration: Duration(milliseconds: 70),
+                        child: Container(
+                          height: _height,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: Color(0xffEC1C24),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'GET STARTED',
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontFamily: 'lato',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:frig/loading_bar.dart';
 import 'package:frig/login.dart';
 import 'package:frig/mpin_create_page.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -258,6 +259,7 @@ class _login_body extends State<_login> {
                           ),
                           child: FlatButton(
                             onPressed: (){
+                              circle(context);
                               send_mobile_otp(_phoneController.text);
                               //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
                             },

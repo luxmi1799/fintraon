@@ -135,10 +135,10 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      'Create MPIN to Login',
+                      new_acc=="new_account"?"Create PIN to Login":"Enter PIN",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,color: Colors.white),
                       textAlign: TextAlign.center,
                     ),

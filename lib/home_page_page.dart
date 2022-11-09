@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:frig/provider_list/profile_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:animated_widgets/widgets/rotation_animated.dart';
-import 'package:animated_widgets/widgets/shake_animated_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
@@ -30,7 +28,7 @@ class page_home extends StatefulWidget{
 
 class _page_home extends State<page_home>{
 
-  String myStringWithLinebreaks = "Lower prices.\nGreat value.";
+  String myStringWithLinebreaks = "Limited time Offer.\n Get news updates.\n Updated Packages";
   int price = 250;
   var name_user;
   var user_id;
@@ -96,17 +94,14 @@ class _page_home extends State<page_home>{
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: Row(
-                children: [
-                  Row(
                     // mainAxisSize: MainAxisSize.min,
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/logo.png", width: 50,),
+                      Image.asset("assets/logo.png", width: 40,),
 
                       SizedBox(
                         width: 8,
                       ),
-
 
                       Text(
                         "Fintracon",
@@ -120,8 +115,6 @@ class _page_home extends State<page_home>{
 
                     ],
                   ),
-                ],
-              ),
             ),
 
 
@@ -354,11 +347,45 @@ class _page_home extends State<page_home>{
                                                         fontWeight: FontWeight
                                                             .bold,
                                                         fontFamily: 'lato',
-                                                        fontSize: 18,
+                                                        fontSize: 19,
                                                       ),),
                                                   ),
                                                 ],
                                               ),
+
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                                    child: Text("₹ 1200",
+                                                      textAlign: TextAlign
+                                                          .center,
+                                                      style: TextStyle(
+                                                        decoration: TextDecoration.lineThrough,
+                                                        color: Colors.white60,
+                                                        fontWeight: FontWeight
+                                                            .bold,
+                                                        fontFamily: 'lato',
+                                                        fontSize: 11,
+                                                      ),),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                                                    child: Text("70 % off",
+                                                      textAlign: TextAlign
+                                                          .center,
+                                                      style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontWeight: FontWeight
+                                                            .bold,
+                                                        fontFamily: 'lato',
+                                                        fontSize: 12,
+                                                      ),),
+                                                  ),
+                                                ],
+                                              ),
+
                                               SizedBox(
                                                 height: 3,
                                               ),
@@ -440,7 +467,7 @@ class _page_home extends State<page_home>{
                                                                           SizedBox(
                                                                             height: 4,),
                                                                           Text(
-                                                                            "-> ",
+                                                                            "○ ",
                                                                             style: TextStyle(
                                                                               color: Colors
                                                                                   .white,
@@ -489,9 +516,9 @@ class _page_home extends State<page_home>{
                                                                       "360",
                                                                       "Registration",
                                                                       "0");
-                                                                  launch(
-                                                                      "https://paytm.me/Sl-vqM9");
-                                                                  // launch("https://paytm.business/link/onlinePayment?linkName=FINTRACON&linkId=LL_546451982");
+                                                                  // launch(
+                                                                  //     "https://paytm.me/Sl-vqM9");
+                                                                   launchUrl(Uri.parse("https://paytm.business/link/onlinePayment?linkName=FINTRACON&linkId=LL_546451982"));
                                                                 },
                                                                 child: Center(
                                                                   child: Text(
@@ -526,90 +553,6 @@ class _page_home extends State<page_home>{
                         ),
                       ),
                     ),
-                    /* Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 20),
-                      child: Container(
-                        height: 300,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 4,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                   width: MediaQuery.of(context).size.width*0.55,
-                                   height: 300,
-                                   decoration: BoxDecoration(
-                                     color: Colors.white,
-                                     borderRadius: BorderRadius.circular(25)
-                                   ),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 110,
-                                        child: Icon(h_icon[index],size: 50,color: Colors.black,),
-                                      ),
-                                      Container(
-                                        width: MediaQuery.of(context).size.width*0.55,
-                                        height: 170,
-                                        decoration: BoxDecoration(
-                                            boxShadow: [BoxShadow(
-                                              color: Colors.grey,
-                                              //blurRadius: 5.0,
-                                            ),],
-                                          gradient: LinearGradient(
-                                              colors: [
-                                                const Color(0xFF000000),
-                                                const Color(0xff2c2b2b),
-                                                const Color(0xFF363636),
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              // begin: const FractionalOffset(0.0, 0.0),
-                                              // end: const FractionalOffset(1.0, 0.0),
-                                              // stops: [0.0, 1.0],
-                                              tileMode: TileMode.clamp
-                                          ),
-                                          //color: Colors.red,
-                                          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)), //
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 5.0,vertical: 15),
-                                              child: Text(title[index],
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontFamily: "lato",
-                                                fontWeight: FontWeight.w800,
-                                              ),),
-                                            ),
-
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 5.0,vertical: 0),
-                                              child: Text(
-                                                subtitle[index],
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 14,
-                                                  fontFamily: "lato",
-                                                ),),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
-                            ),
-                      ),
-                    ),*/
                   ],
                 ) : Center(child: CircularProgressIndicator(),),
               ),

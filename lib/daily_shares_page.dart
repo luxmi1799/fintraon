@@ -1,14 +1,9 @@
 import 'dart:convert';
-
-import 'package:animated_widgets/widgets/rotation_animated.dart';
-import 'package:animated_widgets/widgets/shake_animated_widget.dart';
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frig/provider_list/daily-shares_provider.dart';
 import 'package:frig/provider_list/profile_provider.dart';
-import 'package:lottie/lottie.dart';
 import 'package:hover_effect/hover_effect.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -226,7 +221,7 @@ class _home_page extends State<share_details> {
                             TextSpan(
                               children: [
                                 WidgetSpan(child: Container(width: 20,height: 40,)),
-                                TextSpan(text: "\$ ${sharedetail["MRP"]}",
+                                TextSpan(text: "\₹ ${sharedetail["CurrentPrice"]}",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 23,
@@ -253,14 +248,14 @@ class _home_page extends State<share_details> {
                                 TextSpan(
                                   children: [
                                     WidgetSpan(child: Center(child: Image.asset('assets/rupeecoin.gif',width: 50,height: 30,fit: BoxFit.cover,))),
-                                    TextSpan(text: "224",
+                                    TextSpan(text: sharedetail["ProfitPrice"],
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold
                                         )
                                     ),
-                                    TextSpan(text: ".90",
+                                    TextSpan(text: "",
                                         style: TextStyle(
                                             color: Colors.grey[600],
                                             fontSize: 14,
@@ -284,7 +279,7 @@ class _home_page extends State<share_details> {
                                             fontWeight: FontWeight.bold
                                         )
                                     ),
-                                    TextSpan(text: "(Today)",
+                                    TextSpan(text:"",
                                         style: TextStyle(
                                             color: Colors.grey[600],
                                             fontSize: 14,
@@ -298,8 +293,6 @@ class _home_page extends State<share_details> {
                           ),
                         ],
                       ),
-
-
                     ],
                   ),
                 ),
@@ -565,7 +558,7 @@ class _home_page extends State<share_details> {
                                         height: 10,
                                       ),
 
-                                      Text("224.5",
+                                      Text("\₹ "+sharedetail["CurrentPrice"],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -594,7 +587,7 @@ class _home_page extends State<share_details> {
                                         height: 10,
                                       ),
 
-                                      Text("224.5",
+                                      Text("\₹ "+sharedetail["ProfitPrice"],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -622,7 +615,7 @@ class _home_page extends State<share_details> {
                                         height: 10,
                                       ),
 
-                                      Text("224.5",
+                                      Text("\₹ "+ sharedetail["LowestPrice"],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -647,7 +640,7 @@ class _home_page extends State<share_details> {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 8.0),
-                                        child: Text("Volume",
+                                        child: Text("Profit Ratio",
                                           style: TextStyle(
                                             color: Colors.grey[600],
                                             fontSize: 13,
@@ -661,7 +654,7 @@ class _home_page extends State<share_details> {
                                         height: 10,
                                       ),
 
-                                      Text("224.5",
+                                      Text(sharedetail["ProfitRatio"],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -676,7 +669,7 @@ class _home_page extends State<share_details> {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 8.0),
-                                        child: Text("Avg. Volume",
+                                        child: Text("Avg. Profit %",
                                           style: TextStyle(
                                             color: Colors.grey[600],
                                             fontSize: 13,
@@ -690,7 +683,7 @@ class _home_page extends State<share_details> {
                                         height: 10,
                                       ),
 
-                                      Text("224.5",
+                                      Text(sharedetail["Profit"],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -705,7 +698,7 @@ class _home_page extends State<share_details> {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 8.0),
-                                        child: Text("Market Cap",
+                                        child: Text("Avg. Loss %",
                                           style: TextStyle(
                                             color: Colors.grey[600],
                                             fontSize: 13,
@@ -719,7 +712,7 @@ class _home_page extends State<share_details> {
                                         height: 10,
                                       ),
 
-                                      Text("224.5",
+                                      Text(sharedetail["Loss"],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
