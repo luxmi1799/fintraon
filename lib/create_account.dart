@@ -57,7 +57,7 @@ class _create_account extends State<create_account> {
     final FirebaseMessaging _fcm = FirebaseMessaging.instance;
     final token = await _fcm.getToken();
     deviceTokenToSendPushNotification = token.toString();
-    print("Token Value $deviceTokenToSendPushNotification");
+    print("Token Value1 $deviceTokenToSendPushNotification");
   }
 
   @override
@@ -511,7 +511,7 @@ class _create_account extends State<create_account> {
                        borderRadius: BorderRadius.circular(10),
                        color: Color(0xffEC1C24),
                      ),
-                     child: FlatButton(
+                     child: TextButton(
                        onPressed: (){
                          signup_details(emailcontroller.text, phonenum, namecontroller.text,password , deviceTokenToSendPushNotification);
                         // Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));

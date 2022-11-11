@@ -127,7 +127,7 @@ class _home_page extends State<home_page> with TickerProviderStateMixin{
     final FirebaseMessaging _fcm = FirebaseMessaging.instance;
     final token = await _fcm.getToken();
     deviceTokenToSendPushNotification = token.toString();
-    print("Token Value $deviceTokenToSendPushNotification");
+    print("Token Value2 $deviceTokenToSendPushNotification");
   }
 
   get_blogdetails(BuildContext context) async {

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 
@@ -32,14 +32,22 @@ class _page_home extends State<page_home>{
   int price = 250;
   var name_user;
   var user_id;
-
+  String deviceTokenToSendPushNotification = "";
 
   void initState() {
     super.initState();
     // loading(context);
     Future.delayed(Duration(seconds: 2), () {});
     get_blogdetails(context);
+    getDeviceTokenToSendNotification();
     // isNumeric("8076799976");
+  }
+
+  Future<void> getDeviceTokenToSendNotification() async {
+    final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+    final token = await _fcm.getToken();
+    deviceTokenToSendPushNotification = token.toString();
+    print("Token Value4 $deviceTokenToSendPushNotification");
   }
 
   get_blogdetails(BuildContext context) async {
@@ -151,7 +159,7 @@ class _page_home extends State<page_home>{
                         horizontal: 55.0, vertical: 50),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Hey There ! \n ${name_user ?? ""}",
+                      child: Text("Hey There ! \n ${name_user ?? "" }",
                         style: TextStyle(
                           fontFamily: "lato",
                           fontSize: 22,
@@ -162,6 +170,7 @@ class _page_home extends State<page_home>{
                   ),
                   alignment: Alignment.topCenter,
                 ),
+
 
                 // Padding(
                 //   padding:  EdgeInsets.symmetric(horizontal: 55.0,vertical: 50),
@@ -269,6 +278,8 @@ class _page_home extends State<page_home>{
                         ),
                       ),
                     ),
+
+                    //SelectableText(deviceTokenToSendPushNotification),
 
                     Padding(
                       padding: EdgeInsets.only(left: 10.0, right: 10),

@@ -110,7 +110,7 @@ class _login_body extends State<_login> {
                               Expanded(
                                 child: Container(
                                   height: 50,
-                                  child: FlatButton(
+                                  child: TextButton(
                                     onPressed: (){
 
                                       setState(() {
@@ -120,7 +120,7 @@ class _login_body extends State<_login> {
                                       });
 
                                     },
-                                    color: phone==true? Color(0xffEC1C24):Colors.grey[200],
+                                    //color: phone==true? Color(0xffEC1C24):Colors.grey[200],
                                     child: Text("Mobile No.",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
@@ -136,7 +136,7 @@ class _login_body extends State<_login> {
                               /*Expanded(
                               child: Container(
                                 height: 50,
-                                child: FlatButton(
+                                child: TextButton(
                                   onPressed: (){
                                     setState(() {
                                       email = true;
@@ -257,7 +257,7 @@ class _login_body extends State<_login> {
                             borderRadius: BorderRadius.circular(10),
                             color: Color(0xffEC1C24),
                           ),
-                          child: FlatButton(
+                          child: TextButton(
                             onPressed: (){
                               circle(context);
                               send_mobile_otp(_phoneController.text);
@@ -364,7 +364,7 @@ class _login_body extends State<_login> {
             //         title: Text("Mobile number not valid"),
             //         content: Text("Please check number / Register Your number first"),
             //         actions: <Widget>[
-            //           FlatButton(
+            //           TextButton(
             //             child: Text("Close"),
             //             onPressed: () {
             //               Navigator.of(context).pop();

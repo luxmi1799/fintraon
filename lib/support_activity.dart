@@ -141,7 +141,7 @@ class _support extends State<support> {
                     borderRadius: BorderRadius.circular(10),
                     color: Color(0xffEC1C24),
                   ),
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: (){
                     },
                     child: Text("SUBMIT",

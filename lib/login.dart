@@ -7,6 +7,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'create_account.dart';
 import 'loading_bar.dart';
 import 'otp_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,6 +40,22 @@ class _login_body extends State<_login> {
   bool email_widget = false;
   var getdata;
   TextEditingController _phoneController = TextEditingController();
+  String deviceTokenToSendPushNotification = "";
+
+
+  @override
+  void initState() {
+    super.initState();
+    getDeviceTokenToSendNotification();
+  }
+
+  Future<void> getDeviceTokenToSendNotification() async {
+    final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+    final token = await _fcm.getToken();
+    deviceTokenToSendPushNotification = token.toString();
+    print("Token Value3 $deviceTokenToSendPushNotification");
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -108,7 +125,7 @@ class _login_body extends State<_login> {
                             Expanded(
                               child: Container(
                                 height: 50,
-                                child: FlatButton(
+                                child: TextButton(
                                   onPressed: (){
 
                                     setState(() {
@@ -118,7 +135,7 @@ class _login_body extends State<_login> {
                                     });
 
                                   },
-                                  color: phone==true? Color(0xffEC1C24):Colors.grey[200],
+                                 // color: phone==true? Color(0xffEC1C24):Colors.grey[200],
                                   child: Text("Mobile No.",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -134,7 +151,7 @@ class _login_body extends State<_login> {
                             /*Expanded(
                               child: Container(
                                 height: 50,
-                                child: FlatButton(
+                                child: TextButton(
                                   onPressed: (){
                                     setState(() {
                                       email = true;
@@ -255,10 +272,10 @@ class _login_body extends State<_login> {
                           borderRadius: BorderRadius.circular(10),
                           color: Color(0xffEC1C24),
                         ),
-                        child: FlatButton(
+                        child: TextButton(
                           onPressed: (){
                             circle(context);
-                            send_mobile_otp(_phoneController.text);
+                            send_mobile_otp(_phoneController.text,deviceTokenToSendPushNotification);
                           //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => otp_screen()));
                           },
                           child: Text("Login with MPIN",
@@ -322,13 +339,14 @@ class _login_body extends State<_login> {
     );
   }
 
-  send_mobile_otp(String mobile) async {
+  send_mobile_otp(String mobile , String device_token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String postUrl = "https://fintracon.in/mobile-authenticate/login.php";
     print("stringrequest");
     var request = new http.MultipartRequest(
         "POST", Uri.parse(postUrl));
     request.fields['Mobile'] = mobile;
+    request.fields['DeviceToken'] = device_token;
     request.send().then((response) {
       http.Response.fromStream(response).then((onValue) {
         try {
@@ -369,7 +387,7 @@ class _login_body extends State<_login> {
                           SizedBox(
                             width:340.0,
                             height: 50,
-                            child: FlatButton(
+                            child: TextButton(
                               onPressed: (){},
                               child: Text("Invalid Number",
                                 textAlign: TextAlign.center,
@@ -379,7 +397,7 @@ class _login_body extends State<_login> {
                                   fontWeight: FontWeight.bold,
                                   backgroundColor:  Color(0xffEC1C24),
                                 ),),
-                              color: Color(0xffEC1C24),
+                              //color: Color(0xffEC1C24),
                             ),
                           ),
                           SizedBox(
@@ -404,7 +422,7 @@ class _login_body extends State<_login> {
                               SizedBox(
                                 width: 110,
                                 height: 50,
-                                child: RaisedButton(
+                                child: ElevatedButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
@@ -415,14 +433,14 @@ class _login_body extends State<_login> {
                                       color: Colors.black,
                                     ),
                                   ),
-                                  color:  Colors.white,
+                                  //color:  Colors.white,
                                 ),
                               ),
 
                               SizedBox(
                                 width: 110,
                                 height: 50,
-                                child: RaisedButton(
+                                child: ElevatedButton(
                                   onPressed: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => sign_up()));
                                     // Navigator.pushNamed(context, Myroutes.practical_home);
@@ -434,7 +452,7 @@ class _login_body extends State<_login> {
                                       color: Colors.black,
                                     ),
                                   ),
-                                  color: Colors.white,
+                                  //color: Colors.white,
                                 ),
                               ),
                               // ),
@@ -465,7 +483,7 @@ class _login_body extends State<_login> {
             //         title: Text("Mobile number not valid"),
             //         content: Text("Please check number / Register Your number first"),
             //         actions: <Widget>[
-            //           FlatButton(
+            //           TextButton(
             //             child: Text("Close"),
             //             onPressed: () {
             //               Navigator.of(context).pop();

@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(10),
                     color: Color(0xffEC1C24),
                   ),
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: (){
                       setState(() {
                         _disappear = !_disappear;

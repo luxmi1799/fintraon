@@ -193,7 +193,7 @@ class _create_account extends State<sign_in> {
                       borderRadius: BorderRadius.circular(10),
                       color: Color(0xffEC1C24),
                     ),
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => home_page()));
                       },
